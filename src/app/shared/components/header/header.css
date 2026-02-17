@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.logo {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.icon-primary {
+  color: var(--primary);
+  width: 24px;
+  height: 24px;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--text-main);
+  letter-spacing: -0.04em;
+}
