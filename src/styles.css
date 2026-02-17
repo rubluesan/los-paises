@@ -1,5 +1,38 @@
 :root {
-  /* TODO - Paleta de colores, espaciados, sombras, etc.  */
+
+  /* Paleta de Colores principal*/
+  --primary: #0891b2;
+  --primary-hover: #0e7490;
+  --primary-light: #ecfeff;
+  --secondary: #22d3ee;
+  --star: #ca8a04;
+
+  /* Colores background y superficie */
+  --background: #f8fafc;
+  --surface: #ffffff;
+
+  /* Colores de texto  */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+
+  /* Colores de bordes y figuras/iconos vacios */
+  --border: #e2e8f0;
+
+  /* Sistema de espaciado (1rem - 16px) */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+
+  /* Sombras y radius */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
 }
 
 /* Reset de espaciado */
@@ -11,6 +44,7 @@
   padding: 0;
 }
 
+/* Estilos globales: Fuente y Comportamiento Scroll */
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -18,9 +52,129 @@ html {
 
 body {
   font-family: system-ui, sans-serif;
-  /* TODO - colores de la app */
-  /* background-color: ; */
-  /* color: ; */
+  background-color: var(--background);
+  color: var(--text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Responsive Containers */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(var(--spacing-md), 4vw, var(--spacing-xxl));
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+/* laptop */
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* desktop */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* headers de tamaño fluido */
+h1 {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 6vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+}
+
+/* Consistencia de clickables/seleccionables */
+button,
+select,
+a {
+  cursor: pointer;
+}
+
+/* Consistencia de Botones */
+.btn {
+  appearance: none;
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+
+/* Grids responsivos */
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
