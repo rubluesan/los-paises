@@ -6,18 +6,23 @@
   </div>
 
 
-  <nav>
+  <nav class="navbar">
     <a routerLink="/countries" routerLinkActive="active" class="nav-link">
       <lucide-icon name="home" class="icon-primary"></lucide-icon>
       <span>Explorar</span>
     </a>
   </nav>
 
-  <div class="perfil">
-    Perfil
+  <div class="user-menu">
+    <div class="perfil">
+      Perfil
+    </div>
+
+    <button class="btn-logout" title="Cerrar sesión">
+      <lucide-icon name="log-out" class="icon-sm"></lucide-icon>
+    </button>
+
+    <button class="btn btn-primary btn-sm">Iniciar Sesión</button>
   </div>
 
-  <div class="logout">
-    <a><lucide-icon name="log-out" class="icon-primary"></lucide-icon></a>
-  </div>
 </div>

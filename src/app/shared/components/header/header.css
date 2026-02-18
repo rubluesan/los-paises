@@ -9,6 +9,7 @@
   align-items: center;
 }
 
+/* LOGO */
 .logo {
   display: flex;
   justify-content: center;
@@ -35,6 +36,7 @@
   letter-spacing: -0.04em;
 }
 
+/* NAVBAR */
 .nav-link {
   color: var(--primary);
   font-weight: 700;
@@ -49,4 +51,34 @@
 .nav-link.active {
   color: var(--primary);
   background-color: var(--primary-light);
+}
+
+/* MENU USUARIO */
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* user menu LOGIN - LOGOUT */
+.btn-logout {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-logout:hover {
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.icon-sm {
+  width: 20px;
+  height: 20px;
 }
