@@ -1,9 +1,8 @@
 :root {
-
   /* Paleta de Colores principal*/
   --primary: #0891b2;
   --primary-hover: #0e7490;
-  --primary-light: #ecfeff;
+  --primary-light: #e2feff;
   --secondary: #22d3ee;
   --star: #ca8a04;
 
@@ -62,7 +61,7 @@ body {
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(var(--spacing-md), 4vw, var(--spacing-xxl));
+  padding: var(--spacing-md) var(--spacing-md);
 }
 
 /* tablet */
@@ -105,10 +104,15 @@ h3 {
 }
 
 /* Consistencia de clickables/seleccionables */
+.btn,
 button,
 select,
 a {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Consistencia de Botones */
@@ -153,6 +157,12 @@ a {
   background: var(--primary-light);
 }
 
+/* Consistencia alineado de iconos lucide */
+lucide-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Grids responsivos */
 .responsive-grid {

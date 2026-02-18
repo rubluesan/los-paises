@@ -5,4 +5,9 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./pages/landing/landing').then((m) => m.Landing),
   },
+  {
+    path: 'countries',
+    loadComponent: () => import('./pages/countries/countries').then((m) => m.Countries),
+  },
+  { path: '**', redirectTo: '' },
 ];
