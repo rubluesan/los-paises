@@ -8,4 +8,10 @@ import { LucideAngularModule } from 'lucide-angular';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+  private router: Router = inject(Router);
+
+  login() {
+    this.router.navigate(['/auth/signIn']);
+  }
+}

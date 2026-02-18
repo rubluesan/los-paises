@@ -9,5 +9,9 @@ export const routes: Routes = [
     path: 'countries',
     loadComponent: () => import('./pages/countries/countries').then((m) => m.Countries),
   },
+  {
+    path: 'auth/signIn',
+    loadComponent: () => import('./pages/sign-in/sign-in').then((m) => m.SignIn),
+  },
   { path: '**', redirectTo: '' },
 ];
