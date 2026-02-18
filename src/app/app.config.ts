@@ -8,20 +8,14 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
-import { LucideAngularModule, Globe, LogOut, Home, Binoculars } from 'lucide-angular';
+import { LucideAngularModule } from 'lucide-angular';
+import { myLucideIcons } from './shared/utils/my-lucide-icons';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(),
-    importProvidersFrom(
-      LucideAngularModule.pick({
-        Globe,
-        LogOut,
-        Home,
-        Binoculars,
-      }),
-    ),
+    importProvidersFrom(LucideAngularModule.pick(myLucideIcons)),
   ],
 };
