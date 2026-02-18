@@ -7,8 +7,12 @@
 
 
   <nav class="navbar">
-    <a routerLink="/countries" routerLinkActive="active" class="nav-link">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
       <lucide-icon name="home" class="icon-primary"></lucide-icon>
+      <span>Inicio</span>
+    </a>
+    <a routerLink="/countries" routerLinkActive="active" class="nav-link">
+      <lucide-icon name="binoculars" class="icon-primary"></lucide-icon>
       <span>Explorar</span>
     </a>
   </nav>

@@ -37,6 +37,13 @@
 }
 
 /* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .nav-link {
   color: var(--primary);
   font-weight: 700;
