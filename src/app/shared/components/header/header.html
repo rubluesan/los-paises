@@ -6,7 +6,7 @@
     <span class="site-title">Los Países</span>
   </a>
 
-  @if (isOpen()) {
+  @if (mobileNavIsOpen()) {
   <!-- Overlay borroso -->
   <div class="menu-overlay" (click)="toggleMenu()" role="presentation">
   </div>
@@ -35,7 +35,7 @@
   </nav>
   }
 
-  <nav class="navbar desktop-nav" [attr.aria-hidden]="isOpen()" aria-label="Navegación principal">
+  <nav class="navbar desktop-nav" [attr.aria-hidden]="mobileNavIsOpen()" aria-label="Navegación principal">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
       <lucide-icon name="home" class="icon-primary icon-md" aria-hidden="true"></lucide-icon>
       <span>Inicio</span>
@@ -57,7 +57,7 @@
   </div>
 
   <!-- Botón hamburguesa -->
-  <button class="menu-button" (click)="toggleMenu()" aria-label="Abrir menú" [attr.aria-expanded]="isOpen()"
+  <button class="menu-button" (click)="toggleMenu()" aria-label="Abrir menú" [attr.aria-expanded]="mobileNavIsOpen()"
     aria-controls="mobile-nav-id">
     <lucide-icon name="menu" class="icon-md" aria-hidden="true">
     </lucide-icon>

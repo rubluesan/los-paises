@@ -12,18 +12,18 @@ import { A11yModule } from '@angular/cdk/a11y';
 export class Header {
   private router: Router = inject(Router);
 
-  isOpen = signal(false);
+  mobileNavIsOpen = signal(false);
 
   @HostListener('document:keydown.escape')
   onEscape() {
-    if (this.isOpen()) {
+    if (this.mobileNavIsOpen()) {
       this.toggleMenu();
     }
   }
 
   toggleMenu() {
-    const open = !this.isOpen();
-    this.isOpen.set(open);
+    const open = !this.mobileNavIsOpen();
+    this.mobileNavIsOpen.set(open);
 
     // Bloquear scroll de la página cuando el menú está abierto
     document.body.style.overflow = open ? 'hidden' : '';
