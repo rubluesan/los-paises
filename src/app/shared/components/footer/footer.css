@@ -5,17 +5,21 @@
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: var(--spacing-xxl);
   flex-wrap: wrap;
 }
 
-.footer-brand {
-  min-width: 300px;
+.footer-content > div {
+  flex: 1;
 }
 
-.logo {
-  margin-bottom: var(--spacing-md);
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  align-items: start;
+  gap: var(--spacing-md);
 }
 
 .site-title {

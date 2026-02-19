@@ -105,6 +105,13 @@ h3 {
   }
 }
 
+.container-fluid {
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(var(--spacing-sm), 2vw, var(--spacing-md))
+    clamp(var(--spacing-md), 4vw, var(--spacing-xxl));
+}
+
 /* --- GRIDS RESPONSIVOS --- */
 
 .responsive-grid {
@@ -190,6 +197,7 @@ a {
 .flex-align-center {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
 }
 
