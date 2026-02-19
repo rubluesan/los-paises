@@ -9,6 +9,7 @@ import {
   Mail,
   Linkedin,
   Menu,
+  X,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -21,4 +22,5 @@ export const myLucideIcons = {
   Mail,
   Linkedin,
   Menu,
+  X,
 } as LucideIcons;

@@ -6,11 +6,34 @@
     <span class="site-title">Los Países</span>
   </div>
 
+  @if (isOpen()) {
   <!-- Overlay borroso -->
-  <div class="menu-overlay" [class.active]="isOpen()" (click)="toggleMenu()">
+  <div class="menu-overlay" (click)="toggleMenu()">
   </div>
 
-  <nav class="navbar" [class.active]="isOpen()">
+  <nav class="navbar mobile-nav" animate.enter="enter-animation" animate.leave="leaving">
+    <div class="mobile-nav-header">
+      <div class="logo" class="flex-align-center">
+        <img src="assets/brand-logo.webp" alt="Logo Los Países">
+      </div>
+      <button class="close-icon" (click)="toggleMenu()" aria-label="Cerrar menú">
+        <lucide-icon name="x" class="icon-sm">
+        </lucide-icon>
+      </button>
+    </div>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link"
+      (click)="toggleMenu()">
+      <lucide-icon name="home" class="icon-primary icon-md"></lucide-icon>
+      <span>Inicio</span>
+    </a>
+    <a routerLink="/countries" routerLinkActive="active" class="nav-link" (click)="toggleMenu()">
+      <lucide-icon name="binoculars" class="icon-primary icon-md"></lucide-icon>
+      <span>Explorar</span>
+    </a>
+  </nav>
+  }
+
+  <nav class="navbar desktop-nav">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
       <lucide-icon name="home" class="icon-primary icon-md"></lucide-icon>
       <span>Inicio</span>

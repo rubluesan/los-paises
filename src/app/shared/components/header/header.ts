@@ -11,7 +11,6 @@ import { LucideAngularModule } from 'lucide-angular';
 export class Header {
   private router: Router = inject(Router);
 
-  @ViewChild('navbar') navbar!: ElementRef;
   isOpen = signal(false);
 
   toggleMenu() {
