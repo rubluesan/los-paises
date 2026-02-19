@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 
@@ -10,6 +10,17 @@ import { LucideAngularModule } from 'lucide-angular';
 })
 export class Header {
   private router: Router = inject(Router);
+
+  @ViewChild('navbar') navbar!: ElementRef;
+  isOpen = signal(false);
+
+  toggleMenu() {
+    const open = !this.isOpen();
+    this.isOpen.set(open);
+
+    // Bloquear scroll de la página cuando el menú está abierto
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
 
   login() {
     this.router.navigate(['/auth/signIn']);

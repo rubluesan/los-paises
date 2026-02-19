@@ -6,8 +6,11 @@
     <span class="site-title">Los Países</span>
   </div>
 
+  <!-- Overlay borroso -->
+  <div class="menu-overlay" [class.active]="isOpen()" (click)="toggleMenu()">
+  </div>
 
-  <nav class="navbar">
+  <nav class="navbar" [class.active]="isOpen()">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
       <lucide-icon name="home" class="icon-primary icon-md"></lucide-icon>
       <span>Inicio</span>
@@ -26,8 +29,13 @@
     <button class="btn-logout" title="Cerrar sesión">
       <lucide-icon name="log-out" class="icon-md"></lucide-icon>
     </button>
-
-    <button class="btn btn-primary btn-sm" (click)="login()">Iniciar Sesión</button>
   </div>
 
+  <!-- Botón hamburguesa -->
+  <button class="menu-button" (click)="toggleMenu()" aria-label="Abrir menú">
+    <lucide-icon name="menu" class="icon-md">
+    </lucide-icon>
+  </button>
+
+  <!-- <button class="btn btn-primary btn-sm" (click)="login()">Iniciar Sesión</button> SI NO LOGEADO-->
 </div>

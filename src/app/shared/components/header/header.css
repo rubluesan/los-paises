@@ -34,6 +34,71 @@
   gap: var(--spacing-sm);
 }
 
+/* boton menu hamburguesa */
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+/* Tablet / Mobile */
+@media (max-width: 1024px) {
+  .navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 31%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: start;
+    background: var(--background);
+    padding: 1rem;
+    transform: translateX(100%);
+    transition: transform 0.7s ease;
+    opacity: 0;
+    z-index: 1000;
+  }
+
+  .navbar.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .menu-button {
+    display: flex;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    align-items: center;
+  }
+
+  .menu-button:hover {
+    background: var(--primary-light);
+  }
+
+  /* Overlay borroso */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 900;
+  }
+
+  .menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .nav-link {
   color: var(--primary);
   font-weight: 700;
