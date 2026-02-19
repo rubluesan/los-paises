@@ -193,6 +193,31 @@ a {
   gap: var(--spacing-sm);
 }
 
+/* Consistencia en tamaño de los iconos */
+.icon-primary {
+  color: var(--primary);
+}
+
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-md {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-lg {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-xl {
+  width: 48px;
+  height: 48px;
+}
+
 /* Consistencia alineado de iconos lucide */
 lucide-icon {
   display: inline-flex;

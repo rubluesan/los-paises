@@ -1,18 +1,18 @@
 <div class="header-content container">
 
-  <div class="logo" routerLink="/">
-    <lucide-icon name="globe" class="icon-primary"></lucide-icon>
+  <div class="logo flex-align-center" routerLink="/">
+    <lucide-icon name="globe" class="icon-primary icon-lg"></lucide-icon>
     <span class="site-title">Los Países</span>
   </div>
 
 
   <nav class="navbar">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
-      <lucide-icon name="home" class="icon-primary"></lucide-icon>
+      <lucide-icon name="home" class="icon-primary icon-md"></lucide-icon>
       <span>Inicio</span>
     </a>
     <a routerLink="/countries" routerLinkActive="active" class="nav-link">
-      <lucide-icon name="binoculars" class="icon-primary"></lucide-icon>
+      <lucide-icon name="binoculars" class="icon-primary icon-md"></lucide-icon>
       <span>Explorar</span>
     </a>
   </nav>
@@ -23,7 +23,7 @@
     </div>
 
     <button class="btn-logout" title="Cerrar sesión">
-      <lucide-icon name="log-out" class="icon-sm"></lucide-icon>
+      <lucide-icon name="log-out" class="icon-md"></lucide-icon>
     </button>
 
     <button class="btn btn-primary btn-sm" (click)="login()">Iniciar Sesión</button>

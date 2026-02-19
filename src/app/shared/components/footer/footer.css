@@ -1,8 +1,6 @@
 :host {
   background-color: var(--surface);
   border-top: 1px solid var(--border);
-  /* padding: var(--spacing-xxl) 0 0 0; */
-  /* margin-top: auto; */
 }
 
 .footer-content {
@@ -18,12 +16,6 @@
 
 .logo {
   margin-bottom: var(--spacing-md);
-}
-
-.icon-primary {
-  color: var(--primary);
-  width: 28px;
-  height: 28px;
 }
 
 .site-title {
@@ -59,16 +51,10 @@
   transform: translateY(-3px);
 }
 
-.social-icon {
-  width: 32px;
-  height: 32px;
-}
-
 .legal-links ul {
   display: flex;
   gap: var(--spacing-md);
   list-style: none;
-  /* padding: 0; */
 }
 
 .legal-links ul li {
