@@ -1,3 +1,5 @@
+/* --- VARIABLES --- */
+
 :root {
   /* Paleta de Colores principal*/
   --primary: #0891b2;
@@ -34,6 +36,8 @@
   --radius-full: 9999px;
 }
 
+/* --- ESTILOS GLOBALES --- */
+
 /* Reset de espaciado */
 *,
 *::before,
@@ -43,7 +47,7 @@
   padding: 0;
 }
 
-/* Estilos globales: Fuente y Comportamiento Scroll */
+/* Fuente y Comportamiento Scroll  */
 html {
   font-size: 16px;
   scroll-behavior: smooth;
@@ -57,35 +61,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Responsive Containers */
-.container {
-  width: 100%;
-  margin: 0 auto;
-  padding: var(--spacing-md) var(--spacing-md);
-}
-
-/* tablet */
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-/* laptop */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-/* desktop */
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-/* headers de tamaño fluido */
+/* --- TIPOGRAFÍA FLUIDA --- */
 h1 {
   font-size: clamp(2rem, 8vw, 3.5rem);
   font-weight: 900;
@@ -102,6 +78,60 @@ h3 {
   font-size: clamp(1.25rem, 4vw, 1.75rem);
   font-weight: 700;
 }
+
+/* --- CONTAINERS RESPONSIVOS --- */
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* --- GRIDS RESPONSIVOS --- */
+
+.responsive-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .responsive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- UTILES GLOBALES --- */
 
 /* Consistencia de clickables/seleccionables */
 button,
@@ -156,6 +186,13 @@ a {
   background: var(--primary-light);
 }
 
+/* centrar grupos de items */
+.flex-align-center {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 /* Consistencia alineado de iconos lucide */
 lucide-icon {
   display: inline-flex;
@@ -163,27 +200,7 @@ lucide-icon {
   justify-content: center;
 }
 
-/* Grids responsivos */
-.responsive-grid {
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .responsive-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .responsive-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 1280px) {
-  .responsive-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+/* Consistencia de transiciones fluidas */
+.smooth-transition {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
