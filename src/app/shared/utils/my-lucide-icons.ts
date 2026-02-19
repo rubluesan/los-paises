@@ -6,7 +6,8 @@ import {
   Binoculars,
   Github,
   Twitter,
-  Instagram,
+  Mail,
+  Linkedin,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -16,5 +17,6 @@ export const myLucideIcons = {
   Binoculars,
   Github,
   Twitter,
-  Instagram,
+  Mail,
+  Linkedin,
 } as LucideIcons;
