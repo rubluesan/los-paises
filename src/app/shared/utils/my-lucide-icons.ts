@@ -10,6 +10,10 @@ import {
   Linkedin,
   Menu,
   X,
+  ArrowRight,
+  DatabaseZap,
+  MessagesSquare,
+  UserStar,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -23,4 +27,8 @@ export const myLucideIcons = {
   Linkedin,
   Menu,
   X,
+  ArrowRight,
+  DatabaseZap,
+  MessagesSquare,
+  UserStar,
 } as LucideIcons;

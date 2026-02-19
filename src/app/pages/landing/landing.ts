@@ -1,9 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-landing',
-  imports: [],
+  imports: [RouterLink, LucideAngularModule],
   templateUrl: './landing.html',
   styleUrl: './landing.css',
 })
