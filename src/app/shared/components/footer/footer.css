@@ -6,11 +6,12 @@
 .footer-content {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   gap: var(--spacing-xxl);
   flex-wrap: wrap;
 }
 
-.footer-content > div {
+.footer-content > * {
   flex: 1;
 }
 
@@ -53,6 +54,14 @@
   background: var(--primary);
   color: white;
   transform: translateY(-3px);
+}
+
+.social-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: var(--spacing-sm);
 }
 
 .legal-links ul {
