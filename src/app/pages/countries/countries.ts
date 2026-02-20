@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CountryService } from '../../core/services/country-service';
 
 @Component({
@@ -7,12 +7,26 @@ import { CountryService } from '../../core/services/country-service';
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
-export class Countries {
+export class Countries implements OnInit {
   countryService: CountryService = inject(CountryService);
-  pais = signal('');
+  pais = signal<string | null>(null);
+  isLoading = signal<boolean>(false);
+  error = signal<string | null>(null);
 
   ngOnInit() {
-    let country = this.countryService.getByCode('ESP');
-    this.pais.set(country);
+    this.isLoading.set(true);
+    this.error.set(null); // <--- MUY IMPORTANTE: Limpiar el error anterior
+    this.pais.set(null); // <--- Y limpiar el dato anterior
+
+    this.countryService.getByCode('ESP').subscribe({
+      next: (data) => {
+        this.pais.set(data.name.common);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        this.error.set('No se pudo encontrar el país');
+        this.isLoading.set(false);
+      },
+    });
   }
 }

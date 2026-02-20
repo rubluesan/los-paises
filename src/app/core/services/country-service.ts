@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { Country } from '../models/Country';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +13,7 @@ export class CountryService {
   countries = signal<Country[]>([]);
   loading = signal(false);
 
-  async getByCode(code: string) {
-    this.http.get(`${this.apiUrl}/alpha/${code}?fields=name`).subscribe((data) => {
-      console.log(data);
-    });
+  getByCode(code: string): Observable<Country> {
+    return this.http.get<Country>(`${this.apiUrl}/alpha/${code}?fields=name`);
   }
 }
