@@ -1,10 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CountryService } from '../../core/services/country-service';
 import { LucideAngularModule } from 'lucide-angular';
+import { CountryCard } from './components/country-card/country-card';
+import { Country } from '../../core/models/Country';
 
 @Component({
   selector: 'app-countries',
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, CountryCard],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
@@ -13,6 +15,12 @@ export class Countries implements OnInit {
   // pais = signal<string | null>(null);
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
+
+  mockCountryData: Country = {
+    name: {
+      common: 'España',
+    },
+  };
 
   ngOnInit() {
     this.isLoading.set(true);
