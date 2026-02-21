@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 import { Countries } from './pages/countries/countries';
+import { Landing } from './pages/landing/landing';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/landing/landing').then((m) => m.Landing),
+    component: Landing,
   },
   {
     path: 'countries',
