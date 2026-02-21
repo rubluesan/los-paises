@@ -4,6 +4,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { CountryCard } from './components/country-card/country-card';
 import { Country } from '../../core/models/Country';
 import { CountryCardSkeleton } from './components/country-card-skeleton/country-card-skeleton';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-countries',
@@ -12,6 +13,9 @@ import { CountryCardSkeleton } from './components/country-card-skeleton/country-
   styleUrl: './countries.css',
 })
 export class Countries implements OnInit {
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
+
   countryService: CountryService = inject(CountryService);
 
   countries = signal<Country[] | null>(null);
@@ -21,6 +25,12 @@ export class Countries implements OnInit {
   error = signal<string | null>(null);
 
   ngOnInit() {
+    this.titleService.setTitle('Explorar | Los Países');
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Explora la lista de países. Elige uno para compartir tu opinión con la comunidad.',
+    });
+
     this.countries.set(null);
     this.error.set(null);
 
