@@ -1,6 +1,7 @@
 <div class="country-card smooth-transition">
   <div class="flag-container">
-    <!-- Imagen bandera -->
+    <img [ngSrc]="countryData()?.flags!.svg" [alt]="countryData()?.flags!.alt" class="flag-image" fill
+      [priority]="imgPriority() < 8">
   </div>
   <div class="card-content">
     <div class="card-header flex-align-center">

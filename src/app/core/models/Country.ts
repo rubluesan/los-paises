@@ -6,7 +6,7 @@ export interface Country {
   capital: string[];
   region: string;
   population: number;
-  flags: { png: string; alt: string };
+  flags: { svg: string; alt: string };
   translations: {
     spa: {
       common: string;

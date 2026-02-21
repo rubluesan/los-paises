@@ -14,10 +14,14 @@ export class CountryService {
   loading = signal(false);
 
   getByCode(code: string): Observable<Country> {
-    return this.http.get<Country>(`${this.apiUrl}/alpha/${code}?fields=name,region`);
+    return this.http.get<Country>(
+      `${this.apiUrl}/alpha/${code}?fields=name,cca3,capital,region,population,flags,translations`,
+    );
   }
 
   getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>(`${this.apiUrl}/all?fields=name,region`);
+    return this.http.get<Country[]>(
+      `${this.apiUrl}/all?fields=name,cca3,capital,region,population,flags,translations`,
+    );
   }
 }

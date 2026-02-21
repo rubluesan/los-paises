@@ -5,8 +5,8 @@
 
   <div class="container countries-grid">
     <div class="responsive-grid">
-      @for (country of countries(); track $index) {
-      <app-country-card [countryData]="country"></app-country-card>
+      @for (country of countries(); track $index ) {
+      <app-country-card [countryData]="country" [imgPriority]="$index"></app-country-card>
       }
     </div>
   </div>
