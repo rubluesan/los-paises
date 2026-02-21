@@ -78,7 +78,7 @@ LosPaises es un proyecto de desarrollo web en el entorno cliente. Surge de una a
 - [Arquitectura del proyecto](./docs/arquitectura.md)
 - [Sistema de Diseño UI](./docs/design.md)
 - [Documentación de componentes](./docs/componentes.md)
-- [Documentación de Servicios](.docs/servicios.md)
+- [Documentación de Servicios](./docs/servicios.md)
 
 <!-- GETTING STARTED -->
 
