@@ -27,6 +27,7 @@
       <a href="#about-the-project">Acerca del proyecto</a>
       <ul>
         <li><a href="#built-with">Desarrollado con</a></li>
+        <li><a href="#docs">Documentación técnica</a></li>
       </ul>
     </li>
     <li>
@@ -67,6 +68,17 @@ LosPaises es un proyecto de desarrollo web en el entorno cliente. Surge de una a
 - [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#) [Enlace a documentación externa](https://code.visualstudio.com/docs)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- DOCUMENTATION -->
+
+<a id="docs"></a>
+
+## Documentación técnica
+
+- [Arquitectura del proyecto](./docs/arquitectura.md)
+- [Sistema de Diseño UI](./docs/design.md)
+- [Documentación de componentes](./docs/componentes.md)
+- [Documentación de Servicios](.docs/servicios.md)
 
 <!-- GETTING STARTED -->
 
