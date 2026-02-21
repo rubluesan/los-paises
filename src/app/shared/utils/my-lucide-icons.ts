@@ -14,6 +14,8 @@ import {
   DatabaseZap,
   MessagesSquare,
   UserStar,
+  Star,
+  MapPin,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -31,4 +33,6 @@ export const myLucideIcons = {
   DatabaseZap,
   MessagesSquare,
   UserStar,
+  Star,
+  MapPin,
 } as LucideIcons;

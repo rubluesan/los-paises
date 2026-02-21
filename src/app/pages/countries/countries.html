@@ -1,14 +1,28 @@
-<div class="container" style="min-height: 200px;">
-  @if (isLoading()) {
-  <div>Cargando...</div>
-  }
-  @else if (error()) {
-  <div>Error: {{ error() }}</div>
-  }
-  @else if (pais()) {
-  <div>
-    <h1>Información del País</h1>
-    <p>Nombre: {{ pais() }}</p>
+<div class="countries-container">
+  <div class="countries-hero">
+    HERO Y FILTROS
   </div>
-  }
+
+  <div class="container countries-grid">
+    <div class="responsive-grid">
+      <div class="country-card smooth-transition">
+        <div class="flag-container">
+          <!-- Imagen bandera -->
+        </div>
+        <div class="card-content">
+          <div class="card-header flex-align-center">
+            <h2 class="card-title">Nombre Pais</h2>
+            <div class="rating-badge flex-align-center">
+              <lucide-icon name="star" class="star-icon"></lucide-icon>
+              <span> 3.2 </span>
+            </div>
+          </div>
+          <div class="card-meta flex-align-center">
+            <lucide-icon name="map-pin" class="meta-icon"></lucide-icon>
+            <span> Africa </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
