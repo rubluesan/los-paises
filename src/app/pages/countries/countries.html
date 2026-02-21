@@ -5,7 +5,9 @@
 
   <div class="container countries-grid">
     <div class="responsive-grid">
-      <app-country-card [countryData]="mockCountryData"></app-country-card>
+      @for (country of countries(); track $index) {
+      <app-country-card [countryData]="country"></app-country-card>
+      }
     </div>
   </div>
 </div>

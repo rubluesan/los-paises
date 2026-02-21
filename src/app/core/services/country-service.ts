@@ -14,6 +14,10 @@ export class CountryService {
   loading = signal(false);
 
   getByCode(code: string): Observable<Country> {
-    return this.http.get<Country>(`${this.apiUrl}/alpha/${code}?fields=name`);
+    return this.http.get<Country>(`${this.apiUrl}/alpha/${code}?fields=name,region`);
+  }
+
+  getAll(): Observable<Country[]> {
+    return this.http.get<Country[]>(`${this.apiUrl}/all?fields=name,region`);
   }
 }

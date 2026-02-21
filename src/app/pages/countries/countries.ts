@@ -12,31 +12,26 @@ import { Country } from '../../core/models/Country';
 })
 export class Countries implements OnInit {
   countryService: CountryService = inject(CountryService);
-  // pais = signal<string | null>(null);
+
+  countries = signal<Country[] | null>(null);
+
   isLoading = signal<boolean>(false);
   error = signal<string | null>(null);
 
-  mockCountryData: Country = {
-    name: {
-      common: 'España',
-    },
-  };
-
   ngOnInit() {
+    this.countries.set(null);
     this.isLoading.set(true);
     this.error.set(null);
 
-    // this.pais.set(null); // <--- Y limpiar el dato anterior
-
-    // this.countryService.getByCode('ESP').subscribe({
-    //   next: (data) => {
-    //     this.pais.set(data.name.common);
-    //     this.isLoading.set(false);
-    //   },
-    //   error: (err) => {
-    //     this.error.set('No se pudo encontrar el país');
-    //     this.isLoading.set(false);
-    //   },
-    // });
+    this.countryService.getAll().subscribe({
+      next: (data) => {
+        this.countries.set(data);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        this.error.set('No se pudo encontrar el país');
+        this.isLoading.set(false);
+      },
+    });
   }
 }
