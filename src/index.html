@@ -10,8 +10,56 @@
     content="Descubre y comparte reseñas de cualquier país del mundo, valora con 1 a 5 estrellas y escribe tu reseña.">
   <link rel="icon" type="image/x-icon" href="assets/favicon-32x32.png">
 
+  <link rel="preconnect" href="https://restcountries.com">
+  <link rel="dns-prefetch" href="https://restcountries.com">
   <link rel="preconnect" href="https://flagcdn.com">
-  <link rel="preconnect" href="https://upload.wikimedia.org">
+  <!-- <link rel="preload"
+    href="https://restcountries.com/v3.1/all?fields=name,cca3,capital,region,population,flags,translations" as="fetch"
+    crossorigin="anonymous"> -->
+
+  <style>
+    /* Consistencia de Botones */
+    .btn {
+      appearance: none;
+      border: 2px solid transparent;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      min-height: 48px;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      user-select: none;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      /* transform: translateY(-1px);
+  box-shadow: var(--shadow-md); */
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+  </style>
 </head>
 
 <body>

@@ -9,3 +9,8 @@
     padding: var(--spacing-xxl) 0;
   }
 }
+
+.ensure-min-height {
+  min-height: 90vh; /* Ajusta este valor al tamaño real de tu lista */
+  width: 100%;
+}

@@ -4,16 +4,21 @@
   </div>
 
   <div class="container countries-grid">
-    <div class="responsive-grid">
-      @if (isLoading()) {
-      @for (item of skeletonCount; track $index) {
-      <app-country-card-skeleton></app-country-card-skeleton>
-      }
-      }@else {
-      @for (country of countries(); track $index ) {
+    <div class="responsive-grid ensure-min-height">
+      @defer (on idle) {
+
+      @for (country of countries(); track $index) {
       <app-country-card [countryData]="country" [imgPriority]="$index"></app-country-card>
       }
+      }@placeholder {
+
+      @for (item of skeletonCount; track $index) {
+
+      <app-country-card-skeleton></app-country-card-skeleton>
       }
+      }
+
+
     </div>
   </div>
 </div>
