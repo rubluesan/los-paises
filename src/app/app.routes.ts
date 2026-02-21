@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Countries } from './pages/countries/countries';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'countries',
-    loadComponent: () => import('./pages/countries/countries').then((m) => m.Countries),
+    component: Countries,
   },
   {
     path: 'auth/signIn',
