@@ -33,6 +33,35 @@ Adicionalmente, tengo pensado integrar el proyecto con <a href="https://supabase
 
 </p>
 
+```mermaid
+graph TD
+    %% Estilos
+    classDef client fill:#E3F2FD,stroke:#1565C0,stroke-width:2px,color:#1565C0;
+    classDef angular fill:#1A237E,stroke:#0D47A1,stroke-width:2px,color:#FFFFFF;
+    classDef external fill:#F5F5F5,stroke:#616161,stroke-width:2px,color:#212121;
+
+    %% Nodos
+    User((Usuario)):::client
+
+    subgraph AngularApp [Angular Application]
+        Components[Componentes / Vistas]:::angular
+        Services[Servicios / Logic]:::angular
+    end
+
+    API_Countries[REST Countries API]:::external
+    Supabase[Supabase / PostgreSQL]:::external
+
+    %% Conexiones
+    User -->|Interactúa| Components
+    Components <-->|Solicita datos| Services
+
+    Services -->|HTTP GET| API_Countries
+    Services <-->|Auth / CRUD Reseñas| Supabase
+
+    %% Notas opcionales para contexto
+    style AngularApp fill:#f4f4f4,stroke:#333
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Stack Tecnológico -->
