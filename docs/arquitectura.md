@@ -25,12 +25,11 @@
 
 ## 1. Visión General
 
-<p align="justify">LosPaises es un proyecto de desarrollo web en el que busco aprender y asimilar conocimientos de desarrollo Front-end. Y más en concreto, el uso del framework Angular, con el objetivo de aprender a construir aplicaciones modernas de manera profesional.
-</p>
+<p align="justify">LosPaises es un proyecto de desarrollo web en el que busco aprender y asimilar conocimientos de desarrollo Front-end. Y más en concreto, el uso del framework Angular, con el objetivo de aprender a construir aplicaciones modernas de manera profesional. Me propusieron hacer un proyecto Angular en 2 semanas que demostrara el domino de los pilares del framework: componentes, servicios, rutas, etc.
 
-<p align="justify">Me propusieron hacer un proyecto Angular en 2 semanas que demostrara el uso básico del framework(componentes, servicios, rutas, etc.). Y por este motivo la idea y desarrollo del proyecto se mantendrá simple en lineas generales. También por ello he elegido desarrollar un proyecto que consuma una API de datos de países para entregar datos básicos(nombre, capital, población, etc.) de todos los países del mundo a los usuarios, y que los usuarios puedan explorar una lista, elegir uno de los países y dejar una reseña con valoración de 1 a 5 estrellas.
+He elegido desarrollar una aplicación que consuma la API <a href="https://restcountries.com/">REST Countries</a>, de datos de países, que permita a los usuarios visualizar una lista de países, elegir uno de ellos y dejar una reseña con valoración de 1 a 5 estrellas.
 
-Un proyecto simple, pero que me permitirá aprender y entender elementos básicos del desarrollo de una aplicación moderna, y además, poder explorar un poco más en profundidad detalles de problemas típicos, o entender mejor opciones de arquitectura basadas en consideraciones de, por ejemplo, experiencia de usuario, rendimiento, SEO o Accesibilidad.
+Adicionalmente, tengo pensado integrar el proyecto con <a href="https://supabase.com/">Supabase</a> para agregar gestión de usuarios, permisos, perfil de usuario y guardar los comentarios y valoraciones de la app.
 
 </p>
 
@@ -53,6 +52,8 @@ Un proyecto simple, pero que me permitirá aprender y entender elementos básico
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Estructura de Carpetas -->
+
+<a id="project-structure"></a>
 
 ## 3. Estructura de Carpetas
 
