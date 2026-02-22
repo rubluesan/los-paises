@@ -1,5 +1,7 @@
 # Sistema de diseño UI - WIP
 
+<p align="right"><a href="../README.md">Volver al README general</a></p>
+
 <a id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
