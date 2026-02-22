@@ -111,3 +111,17 @@ graph TD
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Integraciones con APIs -->
+
+<a id="api-integrations"></a>
+
+## 4. Integraciones con APIs
+
+### 4.1. REST Countries
+
+WIP
+
+### 4.2. Supabase
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
