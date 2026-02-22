@@ -53,22 +53,6 @@
 
 LosPaises es un proyecto de desarrollo web en el entorno cliente. Surge de una asignatura de la formación profesional que estoy cursando. Está pensado para practicar el uso de Angular. Con la idea de aprender a desarrollar proyectos Front-end de manera profesional.
 
-<!-- Built with -->
-
-<a id="built-with"></a>
-
-### Desarrollado con
-
-- [![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?logo=angular&logoColor=white)](#) [Enlace a documentación externa](https://angular.dev/overview)
-- [![HTML](https://img.shields.io/badge/HTML-%23E34F26.svg?logo=html5&logoColor=white)](#) [Enlace a documentación externa](https://www.w3schools.com/html/html_intro.asp)
-- [![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](#) [Enlace a documentación externa](https://lenguajecss.com/)
-- [![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=fff)](#) [Enlace a documentación externa](https://www.typescriptlang.org/docs/)
-- [Template del Readme](https://github.com/othneildrew/Best-README-Template)
-- Badges del readme: [md-badges](https://github.com/inttter/md-badges)
-- [![Visual Studio Code](https://custom-icon-badges.demolab.com/badge/Visual%20Studio%20Code-0078d7.svg?logo=vsc&logoColor=white)](#) [Enlace a documentación externa](https://code.visualstudio.com/docs)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- DOCUMENTATION -->
 
 <a id="docs"></a>
@@ -79,6 +63,8 @@ LosPaises es un proyecto de desarrollo web en el entorno cliente. Surge de una a
 - [Sistema de Diseño UI](./docs/design.md)
 - [Documentación de componentes](./docs/componentes.md)
 - [Documentación de Servicios](./docs/servicios.md)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
