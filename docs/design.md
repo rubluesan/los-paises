@@ -40,7 +40,7 @@
 
 <!-- UX -->
 
-<a id="#responsiveness"></a>
+<a id="responsiveness"></a>
 
 ## 4. Responsividad
 
