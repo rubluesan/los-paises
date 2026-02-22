@@ -12,7 +12,17 @@
     <li><a href="#responsiveness">Responsividad</a></li>
 </details>
 
+<!-- Bocetos -->
+
+## Bocetos
+
+El diseño UI del proyecto parte de estos bocetos:
+
+![Bocetos](./img/Mockups-Proyecto-DEC.png)
+
 <!-- Filosofía -->
+
+<a id="philosophy"></a>
 
 ## 1. Filosofía de Diseño: "Menos es más"
 
