@@ -8,7 +8,7 @@
   <ol>
     <li><a href="#philosophy">Filosofía de Diseño</a></li>
     <li><a href="#core-elements">Elementos Principales de la UI</a></li>
-    <li><a href="#ux">Consistencia y Experiencia de usuario</a><li>
+    <li><a href="#ux">Consistencia y Experiencia de usuario</a></li>
     <li><a href="#responsiveness">Responsividad</a></li>
 </details>
 
