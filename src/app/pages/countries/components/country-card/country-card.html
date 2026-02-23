@@ -1,11 +1,12 @@
 <div class="country-card smooth-transition">
+  @if (countryData(); as countryData) {
   <div class="flag-container">
-    <img [ngSrc]="countryData()?.flags!.svg" [alt]="countryData()?.flags!.alt" class="flag-image" fill
+    <img [ngSrc]="countryData.flags.svg" [alt]="countryData.flags.alt" class="flag-image" fill
       [priority]="imgPriority() < 8">
   </div>
   <div class="card-content">
     <div class="card-header flex-align-center">
-      <h2 class="card-title">{{countryData()?.name?.common}}</h2>
+      <h2 class="card-title">{{countryData.translations.spa.common}}</h2>
       <div class="rating-badge flex-align-center">
         <lucide-icon name="star" class="star-icon"></lucide-icon>
         <span> 3.2 </span>
@@ -13,7 +14,8 @@
     </div>
     <div class="card-meta flex-align-center">
       <lucide-icon name="map-pin" class="meta-icon"></lucide-icon>
-      <span> {{countryData()?.region}} </span>
+      <span> {{countryData.region}} </span>
     </div>
   </div>
+  }
 </div>
