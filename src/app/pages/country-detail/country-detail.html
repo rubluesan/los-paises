@@ -1,1 +1,55 @@
-<p>country-detail works!</p>
+<div class="detail-container">
+  <div class="detail-hero">
+    <div class="hero-bg-wrapper">
+      <img
+        [ngSrc]="country()?.flags!.svg"
+        priority
+        fill
+        class="hero-bg-image"
+        [alt]="country()?.flags?.alt"
+      />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-content">
+      <button
+        class="btn btn-outline btn-back flex-align-center smooth-transition"
+        routerLink="/countries"
+      >
+        <lucide-icon name="arrow-left" class="icon-sm"></lucide-icon>
+        <span>Volver</span>
+      </button>
+      <div class="hero-info">
+        <h1>{{ country()?.name!.common }}</h1>
+        <div class="hero-stats flex-align-center">
+          <div class="rating-badge-lg flex-align-center shadow-md">
+            <lucide-icon name="star" class="star-icon"></lucide-icon>
+            <span>{{ 'N/A' }}</span>
+            <!-- TODO -STATS- avg de las valoraciones -->
+          </div>
+          <span class="reviews-count">{{ 0 }} valoraciones</span>
+          <!-- TODO -STATS- conteo valoraciones dinamico-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container main-content">
+    <div class="info-grid">
+      @for (item of getInfoItems(); track item.label) {
+        <div class="info-card smooth-transition">
+          <div class="icon-wrapper flex-align-center">
+            <lucide-icon [name]="item.icon" class="info-icon"></lucide-icon>
+          </div>
+          <div class="info-details">
+            <label>{{ item.label }}</label>
+            <span>{{ item.value }}</span>
+          </div>
+        </div>
+      }
+    </div>
+    <section class="reviews-section">
+      <!-- TODO - Sección de reviews -->
+    </section>
+  </div>
+</div>

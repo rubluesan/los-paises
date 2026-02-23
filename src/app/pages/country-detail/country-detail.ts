@@ -1,14 +1,16 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CountryService } from '../../core/services/country-service';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Country } from '../../core/models/Country';
+import { NgOptimizedImage } from '@angular/common';
+import { LucideAngularModule } from 'lucide-angular';
 @Component({
   selector: 'app-country-detail',
-  imports: [],
+  imports: [NgOptimizedImage, LucideAngularModule, RouterLink],
   templateUrl: './country-detail.html',
   styleUrl: './country-detail.css',
 })
-export class CountryDetail {
+export class CountryDetail implements OnInit {
   private countryService = inject(CountryService);
   private route = inject(ActivatedRoute);
 
@@ -28,5 +30,15 @@ export class CountryDetail {
         this.isLoading.set(false);
       },
     });
+  }
+
+  getInfoItems() {
+    const c = this.country();
+    if (!c) return [];
+    return [
+      { icon: 'landmark', label: 'Capital', value: c.capital?.[0] || 'N/A' },
+      { icon: 'users', label: 'Población', value: c.population.toLocaleString() },
+      { icon: 'map-pin', label: 'Región', value: c.region },
+    ];
   }
 }

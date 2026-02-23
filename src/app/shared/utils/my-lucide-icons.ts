@@ -16,6 +16,9 @@ import {
   UserStar,
   Star,
   MapPin,
+  ArrowLeft,
+  Landmark,
+  Users,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -35,4 +38,7 @@ export const myLucideIcons = {
   UserStar,
   Star,
   MapPin,
+  ArrowLeft,
+  Landmark,
+  Users,
 } as LucideIcons;
