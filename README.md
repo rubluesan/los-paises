@@ -6,7 +6,7 @@
 <div align="center">
   <!-- LOGO -->
   <a href="https://github.com/SalvadorGadea-DWEC-2526/proyecto-final-rubluesan">
-    <img src="public/assets/logo.webp" alt="Logo" width="80" height="80">
+    <img src="./public/assets/brand-logo.webp" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">LosPaises</h3>
