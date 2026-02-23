@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Countries } from './pages/countries/countries';
 import { Landing } from './pages/landing/landing';
+import { CountryDetail } from './pages/country-detail/country-detail';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,10 @@ export const routes: Routes = [
   {
     path: 'countries',
     component: Countries,
+  },
+  {
+    path: 'country/:code',
+    component: CountryDetail,
   },
   {
     path: 'auth/signIn',

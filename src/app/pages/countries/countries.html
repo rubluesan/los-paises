@@ -1,24 +1,21 @@
 <div class="countries-container">
-  <div class="countries-hero">
-    HERO Y FILTROS
-  </div>
+  <div class="countries-hero">HERO Y FILTROS</div>
 
   <div class="container countries-grid">
     <div class="responsive-grid ensure-min-height">
       @defer (on idle) {
-
-      @for (country of countries(); track $index) {
-      <app-country-card [countryData]="country" [imgPriority]="$index"></app-country-card>
+        @for (country of countries(); track $index) {
+          <app-country-card
+            [countryData]="country"
+            [imgPriority]="$index"
+            [routerLink]="['/country', country.cca3]"
+          ></app-country-card>
+        }
+      } @placeholder {
+        @for (item of skeletonCount; track $index) {
+          <app-country-card-skeleton></app-country-card-skeleton>
+        }
       }
-      }@placeholder {
-
-      @for (item of skeletonCount; track $index) {
-
-      <app-country-card-skeleton></app-country-card-skeleton>
-      }
-      }
-
-
     </div>
   </div>
 </div>

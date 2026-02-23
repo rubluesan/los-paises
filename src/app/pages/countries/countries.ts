@@ -5,10 +5,11 @@ import { CountryCard } from './components/country-card/country-card';
 import { Country } from '../../core/models/Country';
 import { CountryCardSkeleton } from './components/country-card-skeleton/country-card-skeleton';
 import { Meta, Title } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-countries',
-  imports: [LucideAngularModule, CountryCard, CountryCardSkeleton],
+  imports: [LucideAngularModule, CountryCard, CountryCardSkeleton, RouterLink],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
