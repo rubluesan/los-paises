@@ -12,13 +12,11 @@ export class CountryService {
 
   getByCode(code: string): Observable<Country> {
     return this.http.get<Country>(
-      `${this.apiUrl}/alpha/${code}?fields=name,cca3,capital,region,population,flags,translations`,
+      `${this.apiUrl}/alpha/${code}?fields=cca3,capital,region,population,flags,translations`,
     );
   }
 
   getAll(): Observable<Country[]> {
-    return this.http.get<Country[]>(
-      `${this.apiUrl}/all?fields=name,cca3,capital,region,population,flags,translations`,
-    );
+    return this.http.get<Country[]>(`${this.apiUrl}/all?fields=cca3,region,flags,translations`);
   }
 }
