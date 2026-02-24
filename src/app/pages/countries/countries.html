@@ -1,5 +1,31 @@
 <div class="countries-container">
-  <div class="countries-hero">HERO Y FILTROS</div>
+  <div class="countries-hero">
+    <div class="container hero-content">
+      <div class="hero-text fade-in">
+        <h1>Explora el Mundo</h1>
+        <p class="text-muted">
+          Descubre, valora y comparte tus experiencias sobre cualquier país del planeta.
+        </p>
+      </div>
+      <div class="search-container fade-in">
+        <div class="search-box smooth-transition">
+          <lucide-icon name="search" class="search-icon"></lucide-icon>
+          <input type="text" placeholder="Buscar país por nombre..." />
+        </div>
+        <div class="filter-box smooth-transition">
+          <lucide-icon name="filter" class="filter-icon"></lucide-icon>
+          <select aria-label="Filtrar países por continente">
+            <option value="">Todos los continentes</option>
+            <option value="Africa">África</option>
+            <option value="Americas">Américas</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europa</option>
+            <option value="Oceania">Oceanía</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container countries-grid">
     <div class="responsive-grid ensure-min-height">

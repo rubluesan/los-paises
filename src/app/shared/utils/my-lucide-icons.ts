@@ -23,6 +23,7 @@ import {
   Sparkles,
   UserPen,
   ChevronDown,
+  Search,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -49,4 +50,5 @@ export const myLucideIcons = {
   Sparkles,
   UserPen,
   ChevronDown,
+  Search,
 } as LucideIcons;
