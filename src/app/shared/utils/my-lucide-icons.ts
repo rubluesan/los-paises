@@ -24,6 +24,7 @@ import {
   UserPen,
   ChevronDown,
   Search,
+  Filter,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -51,4 +52,5 @@ export const myLucideIcons = {
   UserPen,
   ChevronDown,
   Search,
+  Filter,
 } as LucideIcons;
