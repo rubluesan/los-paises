@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, model, OnInit, signal } from '@angular/core';
 import { CountryService } from '../../core/services/country-service';
 import { LucideAngularModule } from 'lucide-angular';
 import { CountryCard } from './components/country-card/country-card';
@@ -6,10 +6,11 @@ import { Country } from '../../core/models/Country';
 import { CountryCardSkeleton } from './components/country-card-skeleton/country-card-skeleton';
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
+import { FilterByNamePipe } from '../../core/pipes/filter-by-name-pipe';
 
 @Component({
   selector: 'app-countries',
-  imports: [LucideAngularModule, CountryCard, CountryCardSkeleton, RouterLink],
+  imports: [LucideAngularModule, CountryCard, CountryCardSkeleton, RouterLink, FilterByNamePipe],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
@@ -24,6 +25,8 @@ export class Countries implements OnInit {
 
   isLoading = signal<boolean>(true);
   error = signal<string | null>(null);
+
+  searchedName = signal<string>('');
 
   ngOnInit() {
     this.titleService.setTitle('Explorar | Los Países');

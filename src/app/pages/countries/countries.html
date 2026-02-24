@@ -4,7 +4,12 @@
       <div class="search-container fade-in">
         <div class="search-box smooth-transition">
           <lucide-icon name="search" class="search-icon"></lucide-icon>
-          <input type="text" placeholder="Buscar país por nombre..." />
+          <input
+            type="text"
+            placeholder="Buscar país por nombre..."
+            [value]="searchedName()"
+            (input)="searchedName.set($any($event.target).value)"
+          />
         </div>
         <div class="filter-box smooth-transition">
           <lucide-icon name="filter" class="filter-icon"></lucide-icon>
@@ -24,7 +29,7 @@
   <div class="container countries-grid">
     <div class="responsive-grid ensure-min-height">
       @defer (on idle) {
-        @for (country of countries(); track $index) {
+        @for (country of countries() ?? [] | filterByName: searchedName(); track $index) {
           <app-country-card
             [countryData]="country"
             [imgPriority]="$index"
