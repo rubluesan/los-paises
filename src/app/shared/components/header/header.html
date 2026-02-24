@@ -70,12 +70,9 @@
     </a>
   </nav>
 
+  <!-- TODO - Mostrar user-menu solo si logeado -->
   <div class="user-menu">
     <app-user-menu></app-user-menu>
-
-    <button class="btn-logout" title="Cerrar sesión" aria-label="Cerrar sesión">
-      <lucide-icon name="log-out" class="icon-md" aria-hidden="true"></lucide-icon>
-    </button>
   </div>
 
   <!-- Botón hamburguesa -->
@@ -89,5 +86,6 @@
     <lucide-icon name="menu" class="icon-md" aria-hidden="true"> </lucide-icon>
   </button>
 
+  <!-- TODO - Mostrar solo si no logeado -->
   <button class="btn btn-primary btn-sm" (click)="login()">Iniciar Sesión</button>
 </header>
