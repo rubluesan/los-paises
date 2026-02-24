@@ -24,5 +24,9 @@ export const routes: Routes = [
     path: 'auth/signUp',
     loadComponent: () => import('./pages/sign-up/sign-up').then((m) => m.SignUp),
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('./pages/profile/profile').then((m) => m.Profile),
+  },
   { path: '**', redirectTo: '' },
 ];

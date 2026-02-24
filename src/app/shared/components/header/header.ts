@@ -2,10 +2,11 @@ import { Component, HostListener, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { A11yModule } from '@angular/cdk/a11y';
+import { UserMenu } from '../user-menu/user-menu';
 
 @Component({
   selector: 'app-header',
-  imports: [LucideAngularModule, RouterLink, RouterLinkActive, A11yModule],
+  imports: [LucideAngularModule, RouterLink, RouterLinkActive, A11yModule, UserMenu],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })

@@ -21,6 +21,7 @@ import {
   Users,
   Lock,
   Sparkles,
+  UserPen,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -45,4 +46,5 @@ export const myLucideIcons = {
   Users,
   Lock,
   Sparkles,
+  UserPen,
 } as LucideIcons;
