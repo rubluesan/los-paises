@@ -22,6 +22,7 @@ import {
   Lock,
   Sparkles,
   UserPen,
+  ChevronDown,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -47,4 +48,5 @@ export const myLucideIcons = {
   Lock,
   Sparkles,
   UserPen,
+  ChevronDown,
 } as LucideIcons;
