@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
-  imports: [LucideAngularModule],
+  imports: [LucideAngularModule, RouterLink],
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css',
 })
