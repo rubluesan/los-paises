@@ -2,6 +2,9 @@ import { Routes } from '@angular/router';
 import { Countries } from './pages/countries/countries';
 import { Landing } from './pages/landing/landing';
 import { CountryDetail } from './pages/country-detail/country-detail';
+import { SignIn } from './pages/sign-in/sign-in';
+import { SignUp } from './pages/sign-up/sign-up';
+import { Profile } from './pages/profile/profile';
 
 export const routes: Routes = [
   {
@@ -18,15 +21,15 @@ export const routes: Routes = [
   },
   {
     path: 'auth/signIn',
-    loadComponent: () => import('./pages/sign-in/sign-in').then((m) => m.SignIn),
+    component: SignIn,
   },
   {
     path: 'auth/signUp',
-    loadComponent: () => import('./pages/sign-up/sign-up').then((m) => m.SignUp),
+    component: SignUp,
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile').then((m) => m.Profile),
+    component: Profile,
   },
   { path: '**', redirectTo: '' },
 ];
