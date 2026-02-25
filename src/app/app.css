@@ -1,9 +1,5 @@
 .app-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-}
-main {
-  flex: 1;
-  width: 100%;
 }
