@@ -7,10 +7,18 @@ import { CountryCardSkeleton } from './components/country-card-skeleton/country-
 import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { FilterByNamePipe } from '../../core/pipes/filter-by-name-pipe';
+import { FilterByContinentPipe } from '../../core/pipes/filter-by-continent-pipe';
 
 @Component({
   selector: 'app-countries',
-  imports: [LucideAngularModule, CountryCard, CountryCardSkeleton, RouterLink, FilterByNamePipe],
+  imports: [
+    LucideAngularModule,
+    CountryCard,
+    CountryCardSkeleton,
+    RouterLink,
+    FilterByNamePipe,
+    FilterByContinentPipe,
+  ],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
 })
@@ -27,6 +35,7 @@ export class Countries implements OnInit {
   error = signal<string | null>(null);
 
   searchedName = signal<string>('');
+  selectedContinent = signal<string>('');
 
   ngOnInit() {
     this.titleService.setTitle('Explorar | Los Países');

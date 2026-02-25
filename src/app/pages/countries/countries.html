@@ -4,12 +4,16 @@
       <div class="search-container fade-in">
         <div class="search-box smooth-transition">
           <lucide-icon name="search" class="search-icon"></lucide-icon>
-          <input type="text" placeholder="Buscar país por nombre..." [value]="searchedName()"
-            (input)="searchedName.set($any($event.target).value)" />
+          <input
+            type="text"
+            placeholder="Buscar país por nombre..."
+            [value]="searchedName()"
+            (input)="searchedName.set($any($event.target).value)"
+          />
         </div>
         <div class="filter-box smooth-transition">
           <lucide-icon name="filter" class="filter-icon"></lucide-icon>
-          <select aria-label="Filtrar países por continente">
+          <select aria-label="Filtrar países por continente" (input)="selectedContinent()">
             <option value="">Todos los continentes</option>
             <option value="Africa">África</option>
             <option value="Americas">América</option>
@@ -23,16 +27,21 @@
   </div>
 
   <div class="container countries-grid">
+    @let filteredCountries =
+      countries() ?? [] | filterByName: searchedName() | filterByContinent: selectedContinent();
     <div class="responsive-grid">
       @defer (on idle) {
-      @for (country of countries() ?? [] | filterByName: searchedName(); track $index) {
-      <app-country-card [countryData]="country" [imgPriority]="$index"
-        [routerLink]="['/country', country.cca3]"></app-country-card>
-      }
+        @for (country of filteredCountries; track $index) {
+          <app-country-card
+            [countryData]="country"
+            [imgPriority]="$index"
+            [routerLink]="['/country', country.cca3]"
+          ></app-country-card>
+        }
       } @placeholder {
-      @for (item of skeletonCount; track $index) {
-      <app-country-card-skeleton></app-country-card-skeleton>
-      }
+        @for (item of skeletonCount; track $index) {
+          <app-country-card-skeleton></app-country-card-skeleton>
+        }
       }
     </div>
   </div>
