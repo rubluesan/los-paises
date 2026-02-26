@@ -28,7 +28,7 @@
     <div class="responsive-grid">
       @defer (on idle) {
       @for (country of filteredCountries; track country.cca3) {
-      <app-country-card [countryData]="country" [imgPriority]="$index"
+      <app-country-card [countryData]="country" [imgPriority]="$index < 4"
         [routerLink]="['/country', country.cca3]"></app-country-card>
       }
       } @placeholder {
