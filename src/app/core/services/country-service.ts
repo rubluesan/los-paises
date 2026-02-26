@@ -12,7 +12,7 @@ export class CountryService {
 
   getByCode(code: string): Observable<Country> {
     return this.http.get<Country>(
-      `${this.apiUrl}/alpha/${code}?fields=cca3,capital,region,population,flags,translations`,
+      `${this.apiUrl}/alpha/${code}?fields=cca3,capital,region,population,flags,translations,maps,name`,
     );
   }
 

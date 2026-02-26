@@ -5,6 +5,7 @@ import { Country } from '../../core/models/Country';
 import { NgOptimizedImage } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { ReviewsSection } from './components/reviews-section/reviews-section';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-country-detail',
   imports: [NgOptimizedImage, LucideAngularModule, RouterLink, ReviewsSection],
@@ -19,11 +20,20 @@ export class CountryDetail implements OnInit {
   isLoading = signal<boolean>(true);
   error = signal<string | null>(null);
 
+  mapUrl: SafeResourceUrl | undefined;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
   ngOnInit() {
     const countryCode = this.route.snapshot.params['code'];
     this.countryService.getByCode(countryCode).subscribe({
       next: (data) => {
         this.country.set(data);
+
+        const countryName = data.name.common;
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(countryName)}&t=&z=5&ie=UTF8&iwloc=&output=embed`;
+
+        this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
         this.isLoading.set(false);
       },
       error: (err) => {

@@ -94,6 +94,15 @@
   font-size: 0.875rem;
 }
 
+.map {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+  height: fit-content;
+  z-index: 100;
+}
+
 .info-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -112,7 +121,7 @@
 
 @media (min-width: 1024px) {
   .info-grid {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -125,6 +134,7 @@
   align-items: center;
   gap: var(--spacing-md);
   border: 1px solid var(--border);
+  height: fit-content;
 }
 
 .icon-wrapper {

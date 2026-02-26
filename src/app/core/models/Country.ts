@@ -12,4 +12,7 @@ export interface Country {
       common: string;
     };
   };
+  maps: {
+    googleMaps: string;
+  };
 }
