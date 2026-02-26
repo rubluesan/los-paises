@@ -1,3 +1,63 @@
-<div class="container empty-container">
-  <p>profile works!</p>
+<div class="profile-container fade-in">
+  <div class="container">
+    <header class="profile-header">
+      <h1>Mi Perfil</h1>
+      <p class="text-muted">Gestiona tu información personal y presencia en la comunidad.</p>
+    </header>
+
+    <div class="profile-layout">
+      <aside class="profile-sidebar">
+        <div class="card avatar-card shadow-sm">
+          <div class="avatar-section">
+            <div class="avatar-container avatar-lg shadow-md">
+              <!-- TODO - aquí imagen avatar -->
+            </div>
+
+            <div class="user-info">
+              <h2> <!-- TODO - aquí nombre de usuario --> </h2>
+              <span class="email-badge"><!-- TODO - aquí email --></span>
+            </div>
+
+            <label for="avatar-upload" class="btn btn-outline btn-sm avatar-action smooth-transition">
+              <lucide-icon name="upload" class="icon-xs"></lucide-icon>
+              <span>Cambiar foto</span>
+              <input type="file" id="avatar-upload" accept="image/*" class="hidden" />
+              <!-- TODO - (change)= funcionUploadAvatar -->
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Settings -->
+      <div class="profile-main">
+        <div class="card settings-card shadow-sm">
+          <div class="card-header">
+            <lucide-icon name="user" class="icon-primary"></lucide-icon>
+            <h3>Información Personal</h3>
+          </div>
+
+          <div class="settings-form">
+            <div class="form-group">
+              <label for="username">Nombre de usuario</label>
+              <div class="input-wrapper smooth-transition">
+                <lucide-icon name="users" class="input-icon"></lucide-icon>
+                <input type="text" id="username" [(ngModel)]="username" placeholder="Tu nombre público" />
+              </div>
+              <p class="input-hint">
+                Este es el nombre que verán otros viajeros en tus reseñas.
+              </p>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-primary flex-align-center smooth-transition">
+                <lucide-icon name="save" class="icon-sm"></lucide-icon>
+                <span>Guardar cambios</span>
+              </button>
+              <!--  TODO - (click)="updateProfile()" -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -25,6 +25,9 @@ import {
   ChevronDown,
   Search,
   Filter,
+  Upload,
+  Save,
+  User,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -53,4 +56,7 @@ export const myLucideIcons = {
   ChevronDown,
   Search,
   Filter,
+  Upload,
+  Save,
+  User,
 } as LucideIcons;
