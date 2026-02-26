@@ -8,6 +8,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { FilterByNamePipe } from '../../core/pipes/filter-by-name-pipe';
 import { FilterByContinentPipe } from '../../core/pipes/filter-by-continent-pipe';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-countries',
@@ -18,6 +19,7 @@ import { FilterByContinentPipe } from '../../core/pipes/filter-by-continent-pipe
     RouterLink,
     FilterByNamePipe,
     FilterByContinentPipe,
+    FormsModule,
   ],
   templateUrl: './countries.html',
   styleUrl: './countries.css',

@@ -6,11 +6,12 @@ import { Country } from '../models/Country';
 })
 export class FilterByContinentPipe implements PipeTransform {
   transform(countries: Country[], selectedContinent: string): Country[] {
-    if (selectedContinent) {
-      return countries.filter((country: Country) => {
-        return country.region.localeCompare(selectedContinent);
-      });
+    if (!selectedContinent || selectedContinent === '') {
+      // Añade 'All' por si tienes una opción por defecto
+      return countries;
     }
-    return countries;
+    return countries.filter((country: Country) => {
+      return country.region === selectedContinent;
+    });
   }
 }
