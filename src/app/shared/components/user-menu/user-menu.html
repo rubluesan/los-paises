@@ -5,30 +5,31 @@
   </button>
 
   @if (isOpen()) {
-    <div class="dropdown-card" animate.enter="pop-in" animate.leave="pop-out">
-      <div class="user-info">
-        <img [src]="user().avatar" alt="" class="avatar-large" />
-        <div class="details">
-          <span class="name">{{ user().name }}</span>
-          <span class="email">{{ user().email }}</span>
-        </div>
+  <div class="dropdown-card" animate.enter="pop-in" animate.leave="pop-out" cdkTrapFocus
+    (cdkTrapFocusAutoCapture)="true">
+    <div class="user-info">
+      <img [src]="user().avatar" alt="" class="avatar-large" />
+      <div class="details">
+        <span class="name">{{ user().name }}</span>
+        <span class="email">{{ user().email }}</span>
       </div>
-
-      <hr class="divider" />
-
-      <nav class="menu-links">
-        <a routerLink="/profile" (click)="isOpen.set(false)">
-          <lucide-icon name="user-pen"></lucide-icon>
-          Mi Perfil
-        </a>
-
-        <button class="sign-out-btn" (click)="signOut()">
-          <lucide-icon name="log-out"></lucide-icon>
-          Cerrar sesión
-        </button>
-      </nav>
     </div>
 
-    <div class="close-overlay" (click)="toggleMenu()"></div>
+    <hr class="divider" />
+
+    <nav class="menu-links">
+      <a routerLink="/profile" (click)="isOpen.set(false)">
+        <lucide-icon name="user-pen"></lucide-icon>
+        Mi Perfil
+      </a>
+
+      <button class="sign-out-btn" (click)="signOut()">
+        <lucide-icon name="log-out"></lucide-icon>
+        Cerrar sesión
+      </button>
+    </nav>
+  </div>
+
+  <div class="close-overlay" (click)="toggleMenu()"></div>
   }
 </div>
