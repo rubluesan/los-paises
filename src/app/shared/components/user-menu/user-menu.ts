@@ -30,8 +30,10 @@ export class UserMenu {
 
   @HostListener('document:click', ['$event'])
   onClick(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.toggleMenu();
+    if (this.isOpen()) {
+      if (!this.elementRef.nativeElement.contains(event.target)) {
+        this.toggleMenu();
+      }
     }
   }
 
