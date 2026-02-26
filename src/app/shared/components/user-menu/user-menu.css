@@ -119,8 +119,13 @@
   }
 }
 
-.close-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
+/* Animación de rotacion de flecha */
+
+.chevron {
+  transition: transform 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.chevron.rotated {
+  transform: rotate(180deg);
 }
