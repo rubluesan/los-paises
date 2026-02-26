@@ -4,9 +4,10 @@ import { RouterLink, ActivatedRoute } from '@angular/router';
 import { Country } from '../../core/models/Country';
 import { NgOptimizedImage } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
+import { ReviewsSection } from './components/reviews-section/reviews-section';
 @Component({
   selector: 'app-country-detail',
-  imports: [NgOptimizedImage, LucideAngularModule, RouterLink],
+  imports: [NgOptimizedImage, LucideAngularModule, RouterLink, ReviewsSection],
   templateUrl: './country-detail.html',
   styleUrl: './country-detail.css',
 })

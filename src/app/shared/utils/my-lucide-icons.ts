@@ -28,6 +28,9 @@ import {
   Upload,
   Save,
   User,
+  Loader2,
+  Send,
+  MessageSquareDashed,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -59,4 +62,7 @@ export const myLucideIcons = {
   Upload,
   Save,
   User,
+  Loader2,
+  Send,
+  MessageSquareDashed,
 } as LucideIcons;
