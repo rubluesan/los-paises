@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../../core/services/auth-service';
 import { UserInfo } from '../../../core/models/auth/UserInfo';
+import { ToastService } from '../../../core/services/toast-service';
 
 @Component({
   selector: 'app-user-menu',
@@ -15,6 +16,7 @@ export class UserMenu implements OnInit {
   private router = inject(Router);
   isOpen = signal(false);
   authService = inject(AuthService);
+  toastService = inject(ToastService);
 
   user = signal<UserInfo | null>(null);
 
@@ -56,10 +58,11 @@ export class UserMenu implements OnInit {
       next: (response) => {
         localStorage.removeItem('auth_token');
         this.authService.userSession.set(null);
-        this.router.navigate(['/countries']);
+        this.toastService.showMessage(response.message, false);
+        this.router.navigate(['/auth/signIn']);
       },
       error: (error) => {
-        //
+        this.toastService.showMessage(error.message, true);
       },
     });
 
