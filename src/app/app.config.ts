@@ -6,10 +6,11 @@ import {
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { LucideAngularModule } from 'lucide-angular';
 import { myLucideIcons } from './shared/utils/my-lucide-icons';
+import { authInterceptor } from './core/interceptors/auth-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
         anchorScrolling: 'enabled',
       }),
     ),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([authInterceptor])),
     importProvidersFrom(LucideAngularModule.pick(myLucideIcons)),
   ],
 };
