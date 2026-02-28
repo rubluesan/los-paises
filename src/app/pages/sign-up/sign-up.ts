@@ -80,13 +80,11 @@ export class SignUp {
 
     this.authService.register(data).subscribe({
       next: (response) => {
-        // response.body?.access_token
-        // response.body?.token_type
-        // navegamos a la ruta profile/{id}
         this.isError.set(false);
         this.message.set('Registrado con Éxito');
-        // this.router.navigateByUrl('/profile:id');
         this.loading.set(false);
+
+        this.router.navigate(['/profile']);
       },
       error: (error) => {
         this.isError.set(true);

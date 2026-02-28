@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { RegisterData } from '../models/auth/RegisterData';
 import { AuthResponse } from '../models/auth/AuthResponse';
+import { UserInfo } from '../models/auth/UserInfo';
 
 @Injectable({
   providedIn: 'root',
@@ -29,13 +30,19 @@ export class AuthService {
       );
   }
 
+  public getUserInfo(): Observable<HttpResponse<UserInfo>> {
+    return this.http.get<UserInfo>(environment.apiUrl + '/user', {
+      observe: 'response',
+    });
+  }
+
   private saveSession(access_token: string) {
     localStorage.setItem('auth_token', access_token);
     this.userSession.set(access_token);
   }
 
   public logout() {
-    localStorage.removeItem('auth-token');
+    localStorage.removeItem('auth_token');
     this.userSession.set(null);
   }
 }
