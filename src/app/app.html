@@ -4,4 +4,8 @@
     <router-outlet />
   </main>
   <app-footer></app-footer>
+  @if (toastService.message()) {
+  <app-notification-toast [isError]="toastService.isError()" [message]="toastService.message()"
+    (onClose)="toastService.clear()"></app-notification-toast>
+  }
 </div>

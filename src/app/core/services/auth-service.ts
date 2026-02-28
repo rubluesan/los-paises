@@ -6,6 +6,7 @@ import { RegisterData } from '../models/auth/RegisterData';
 import { AuthResponse } from '../models/auth/AuthResponse';
 import { UserInfo } from '../models/auth/UserInfo';
 import { LoginData } from '../models/auth/LoginData';
+import { LogOutResponse } from '../models/auth/LogOutResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -56,8 +57,17 @@ export class AuthService {
     this.userSession.set(access_token);
   }
 
-  public logout() {
-    localStorage.removeItem('auth_token');
-    this.userSession.set(null);
+  public logout(): Observable<LogOutResponse> {
+    return this.http
+      .post<LogOutResponse>(environment.apiUrl + '/logout', {
+        observe: 'response',
+      })
+      .pipe(
+        tap((response) => {
+          if (response.message) {
+            //
+          }
+        }),
+      );
   }
 }

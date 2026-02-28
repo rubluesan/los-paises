@@ -1,6 +1,6 @@
 import { A11yModule } from '@angular/cdk/a11y';
 import { Component, ElementRef, HostListener, inject, OnInit, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../../core/services/auth-service';
 import { UserInfo } from '../../../core/models/auth/UserInfo';
@@ -12,6 +12,7 @@ import { UserInfo } from '../../../core/models/auth/UserInfo';
   styleUrl: './user-menu.css',
 })
 export class UserMenu implements OnInit {
+  private router = inject(Router);
   isOpen = signal(false);
   authService = inject(AuthService);
 
@@ -51,7 +52,16 @@ export class UserMenu implements OnInit {
   }
 
   signOut() {
-    this.authService.logout();
+    this.authService.logout().subscribe({
+      next: (response) => {
+        localStorage.removeItem('auth_token');
+        this.authService.userSession.set(null);
+        this.router.navigate(['/countries']);
+      },
+      error: (error) => {
+        //
+      },
+    });
 
     this.isOpen.set(false);
   }
