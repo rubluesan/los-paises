@@ -19,9 +19,9 @@
           <input type="email" id="email" placeholder="tu@email.com" [formField]="registerForm.email" />
         </div>
         @if (registerForm.email().invalid() && registerForm.email().touched()) {
-        <ul>
+        <ul class="validation-error-list">
           @for (error of registerForm.email().errors(); track error) {
-          <li class="error">{{ error.message }}</li>
+          <li class="validation-error">{{ error.message }}</li>
           }
         </ul>
         }
@@ -34,9 +34,9 @@
           <input type="password" id="password" placeholder="••••••••" [formField]="registerForm.password" />
         </div>
         @if (registerForm.password().invalid() && registerForm.password().touched()) {
-        <ul>
+        <ul class="validation-error-list">
           @for (error of registerForm.password().errors(); track error) {
-          <li class="error">{{ error.message }}</li>
+          <li class="validation-error">{{ error.message }}</li>
           }
         </ul>
         }
@@ -49,6 +49,13 @@
           <input type="password" id="password-confirmation" placeholder="••••••••"
             [formField]="registerForm.password_confirmation" />
         </div>
+        @if (registerForm.password().errors() && registerForm.password().touched()) {
+        <ul class="validation-error-list">
+          @for (error of registerForm.password_confirmation().errors(); track error) {
+          <li class="validation-error">{{ error.message }}</li>
+          }
+        </ul>
+        }
       </div>
 
       <button type="button" class="btn btn-primary btn-block smooth-transition" (click)="handleAuth()">

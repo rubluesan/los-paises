@@ -10,6 +10,7 @@ import {
   max,
   minLength,
   maxLength,
+  validate,
 } from '@angular/forms/signals';
 import { AuthService } from '../../core/services/auth-service';
 import { RegisterData } from '../../core/models/auth/RegisterData';
@@ -39,24 +40,43 @@ export class SignUp {
   });
 
   registerForm = form(this.registerModel, (schemaPath) => {
-    required(schemaPath.email, { message: 'Email is required' });
-    email(schemaPath.email, { message: 'Enter a valid email address' });
+    required(schemaPath.email, { message: 'El email es obligatorio' });
+    email(schemaPath.email, { message: 'Introduzca un email válido' });
 
-    required(schemaPath.password, { message: 'Password is required' });
+    required(schemaPath.password, { message: 'La contraseña es obligatoria' });
     minLength(schemaPath.password, 8, {
-      message: 'The password field must be at least 8 characters',
+      message: 'La contraseña debe tener al menos 8 carácteres',
     });
     maxLength(schemaPath.password, 16, {
-      message: 'The password field must have less than 17 characters',
+      message: 'La contraseña puede tener 16 carácteres como máximo',
     });
     required(schemaPath.password_confirmation, { message: 'Debes confirmar la contraseña' });
+
+    validate(schemaPath.password_confirmation, ({ value, valueOf }) => {
+      const confirm = value();
+      const password = valueOf(schemaPath.password);
+      if (confirm !== password && confirm.length) {
+        return {
+          kind: 'passwordMismatch',
+          message: 'Las contraseñas no coinciden',
+        };
+      }
+      return null;
+    });
   });
 
   async handleAuth() {
     this.loading.set(true);
     this.message.set('');
 
-    const data = this.registerForm().value(); // Esto ya te devuelve el objeto RegisterData
+    const data = this.registerForm().value();
+    if (this.registerForm().invalid()) {
+      this.isError.set(true);
+      this.message.set(
+        'Hay campos inválidos. Por favor, revise el email y contraseña introducidos.',
+      );
+      return;
+    }
 
     this.authService.register(data).subscribe({
       next: (response) => {
@@ -69,9 +89,13 @@ export class SignUp {
         this.loading.set(false);
       },
       error: (error) => {
-        // interpolamos a la vista error.message
         this.isError.set(true);
-        this.message.set(error.message);
+        if (error.status === 422) {
+          const backendMessage = error.error.errors?.email?.[0] || 'Este email ya está en uso';
+          this.message.set(backendMessage);
+        } else {
+          this.message.set('Ocurrió un error inesperado: ' + error.error);
+        }
         this.loading.set(false);
       },
     });
