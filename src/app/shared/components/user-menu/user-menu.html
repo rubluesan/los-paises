@@ -1,6 +1,10 @@
 <div class="user-menu-container">
   <button class="avatar-btn" (click)="toggleMenu()" [attr.aria-expanded]="isOpen()">
-    <img [src]="user()?.profile?.avatar_url" alt="User avatar" class="avatar-img" />
+    <div class="avatar-container">
+      @if (user()) {
+      <img [src]="user()?.profile?.avatar_url" alt="User avatar" class="avatar-img" />
+      }
+    </div>
     <lucide-icon name="chevron-down" class="chevron" [class.rotated]="isOpen()"></lucide-icon>
   </button>
 

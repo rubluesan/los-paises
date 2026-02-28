@@ -44,12 +44,6 @@
   margin-bottom: var(--spacing-xl);
 }
 
-.avatar-lg {
-  border: 4px solid var(--surface);
-  outline: 1px solid var(--border);
-  margin-bottom: var(--spacing-sm);
-}
-
 .avatar-action {
   margin-top: var(--spacing-sm);
   min-height: 40px;

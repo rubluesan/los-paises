@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, OnInit, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { RegisterData } from '../models/auth/RegisterData';
@@ -14,6 +14,8 @@ export class AuthService {
   private http = inject(HttpClient);
 
   userSession = signal<string | null>(localStorage.getItem('auth_token'));
+
+  userInfo = signal<UserInfo | null>(null);
 
   isLoggedIn = computed(() => !!this.userSession());
 
@@ -31,10 +33,8 @@ export class AuthService {
       );
   }
 
-  public getUserInfo(): Observable<HttpResponse<UserInfo>> {
-    return this.http.get<UserInfo>(environment.apiUrl + '/user', {
-      observe: 'response',
-    });
+  public getUserInfo(): Observable<UserInfo> {
+    return this.http.get<UserInfo>(environment.apiUrl + '/user');
   }
 
   public login(loginData: LoginData): Observable<HttpResponse<AuthResponse>> {

@@ -10,12 +10,16 @@
         <div class="card avatar-card shadow-sm">
           <div class="avatar-section">
             <div class="avatar-container avatar-lg shadow-md">
-              <!-- TODO - aquí imagen avatar -->
+              @if (user()) {
+              <img [src]="user()?.profile?.avatar_url" alt="Avatar" />
+              }
             </div>
 
             <div class="user-info">
-              <h2> <!-- TODO - aquí nombre de usuario --> </h2>
-              <span class="email-badge"><!-- TODO - aquí email --></span>
+              @if (user()) {
+              <h2> {{ user()?.profile?.username }} </h2>
+              <span class="email-badge">{{user()?.email}}</span>
+              }
             </div>
 
             <label for="avatar-upload" class="btn btn-outline btn-sm avatar-action smooth-transition">
@@ -41,7 +45,7 @@
               <label for="username">Nombre de usuario</label>
               <div class="input-wrapper smooth-transition">
                 <lucide-icon name="users" class="input-icon"></lucide-icon>
-                <input type="text" id="username" [(ngModel)]="username" placeholder="Tu nombre público" />
+                <input type="text" id="username" placeholder="Tu nombre público" />
               </div>
               <p class="input-hint">
                 Este es el nombre que verán otros viajeros en tus reseñas.

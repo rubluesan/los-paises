@@ -15,25 +15,17 @@ export class UserMenu implements OnInit {
   isOpen = signal(false);
   authService = inject(AuthService);
 
-  // TODO - traer data de usuarios dinamicamente
   user = signal<UserInfo | null>(null);
 
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     this.authService.getUserInfo().subscribe({
-      next: (response) => {
-        this.user.set(response.body);
+      next: (data) => {
+        this.user.set(data);
       },
       error: (error) => {
-        // this.isError.set(true);
-        // if (error.status === 422) {
-        //   const backendMessage = error.error.errors?.email?.[0] || 'Este email ya está en uso';
-        //   this.message.set(backendMessage);
-        // } else {
-        //   this.message.set('Ocurrió un error inesperado: ' + error.error);
-        // }
-        // this.loading.set(false);
+        // errores
       },
     });
   }
