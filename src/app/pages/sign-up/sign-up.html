@@ -14,7 +14,7 @@
         </div>
         @if (registerForm.email().invalid() && registerForm.email().touched()) {
         <ul class="validation-error-list">
-          @for (error of registerForm.email().errors(); track error) {
+          @for (error of registerForm.email().errors(); track error.kind) {
           <li class="validation-error">{{ error.message }}</li>
           }
         </ul>
@@ -29,7 +29,7 @@
         </div>
         @if (registerForm.password().invalid() && registerForm.password().touched()) {
         <ul class="validation-error-list">
-          @for (error of registerForm.password().errors(); track error) {
+          @for (error of registerForm.password().errors(); track error.kind) {
           <li class="validation-error">{{ error.message }}</li>
           }
         </ul>
@@ -45,7 +45,7 @@
         </div>
         @if (registerForm.password().errors() && registerForm.password().touched()) {
         <ul class="validation-error-list">
-          @for (error of registerForm.password_confirmation().errors(); track error) {
+          @for (error of registerForm.password_confirmation().errors(); track error.kind) {
           <li class="validation-error">{{ error.message }}</li>
           }
         </ul>
