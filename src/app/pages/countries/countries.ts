@@ -9,6 +9,8 @@ import { RouterLink } from '@angular/router';
 import { FilterByNamePipe } from '../../core/pipes/filter-by-name-pipe';
 import { FilterByContinentPipe } from '../../core/pipes/filter-by-continent-pipe';
 import { FormsModule } from '@angular/forms';
+import { CountryStats } from '../../core/models/CountryStats';
+import { CountryStatsService } from '../../core/services/country-stats-service';
 
 @Component({
   selector: 'app-countries',
@@ -39,11 +41,25 @@ export class Countries implements OnInit {
   searchedName = signal<string>('');
   selectedContinent = signal<string>('');
 
+  countryStatsService = inject(CountryStatsService);
+  allCountryStats = signal<CountryStats[]>([]);
+
   ngOnInit() {
     this.titleService.setTitle('Explorar | Los Países');
     this.metaService.updateTag({
       name: 'description',
       content: 'Explora la lista de países. Elige uno para compartir tu opinión con la comunidad.',
+    });
+
+    this.countryStatsService.getAll().subscribe({
+      next: (response) => {
+        this.allCountryStats.set(response.body?.data!);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        this.error.set('No se pudo cargar las estadísticas');
+        this.isLoading.set(false);
+      },
     });
 
     this.countries.set(null);
@@ -59,5 +75,10 @@ export class Countries implements OnInit {
         this.isLoading.set(false);
       },
     });
+  }
+
+  getRating(code: string): string {
+    const stat = this.allCountryStats().find((s) => s.country_id === code);
+    return stat ? stat.avg_rating.toFixed(1) : 'N/A';
   }
 }

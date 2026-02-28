@@ -12,4 +12,5 @@ import { NgOptimizedImage } from '@angular/common';
 export class CountryCard {
   countryData = input<Country | null>(null);
   imgPriority = input<boolean>(false);
+  rating = input<string>('N/A');
 }
