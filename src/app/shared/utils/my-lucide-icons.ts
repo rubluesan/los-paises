@@ -31,6 +31,8 @@ import {
   Loader2,
   Send,
   MessageSquareDashed,
+  CircleAlert,
+  CircleCheck,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -65,4 +67,6 @@ export const myLucideIcons = {
   Loader2,
   Send,
   MessageSquareDashed,
+  CircleAlert,
+  CircleCheck,
 } as LucideIcons;
