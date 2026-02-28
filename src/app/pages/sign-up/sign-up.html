@@ -19,10 +19,9 @@
           <input type="email" id="email" placeholder="tu@email.com" [formField]="registerForm.email" />
         </div>
         @if (registerForm.email().invalid() && registerForm.email().touched()) {
-        <p class="error">Email has validation errors:</p>
         <ul>
           @for (error of registerForm.email().errors(); track error) {
-          <li>{{ error.message }}</li>
+          <li class="error">{{ error.message }}</li>
           }
         </ul>
         }
@@ -35,10 +34,9 @@
           <input type="password" id="password" placeholder="••••••••" [formField]="registerForm.password" />
         </div>
         @if (registerForm.password().invalid() && registerForm.password().touched()) {
-        <p class="error">Email has validation errors:</p>
         <ul>
           @for (error of registerForm.password().errors(); track error) {
-          <li>{{ error.message }}</li>
+          <li class="error">{{ error.message }}</li>
           }
         </ul>
         }

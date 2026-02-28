@@ -129,24 +129,8 @@ input {
   text-decoration: underline;
 }
 
-.auth-toast {
-  position: fixed;
-  bottom: var(--spacing-xl);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #10b981;
-  color: white;
-  padding: var(--spacing-md) var(--spacing-xl);
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  font-weight: 700;
-  z-index: 1000;
-}
-
-.auth-toast.error {
-  background: #ef4444;
+.error {
+  color: #ef4444;
 }
 
 .icon-sm {
