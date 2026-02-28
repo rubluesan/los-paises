@@ -33,6 +33,9 @@ import {
   MessageSquareDashed,
   CircleAlert,
   CircleCheck,
+  Settings,
+  Delete,
+  Trash2,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -69,4 +72,6 @@ export const myLucideIcons = {
   MessageSquareDashed,
   CircleAlert,
   CircleCheck,
+  Settings,
+  Trash2,
 } as LucideIcons;
