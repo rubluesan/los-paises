@@ -1,10 +1,4 @@
 <div class="auth-container fade-in">
-  <!-- Toast para mensajes de éxito o error -->
-  @if (message()) {
-  <app-notification-toast [isError]="isError()" [message]="message()"
-    (onClose)="message.set('')"></app-notification-toast>
-  }
-
   <div class="auth-card shadow-lg">
     <div class="auth-header">
       <h1>Crea tu cuenta</h1>

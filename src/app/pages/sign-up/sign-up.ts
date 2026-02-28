@@ -14,12 +14,11 @@ import {
 } from '@angular/forms/signals';
 import { AuthService } from '../../core/services/auth-service';
 import { RegisterData } from '../../core/models/auth/RegisterData';
-import { NotificationToast } from '../../shared/components/notification-toast/notification-toast';
 import { ToastService } from '../../core/services/toast-service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [LucideAngularModule, RouterLink, FormField, NotificationToast],
+  imports: [LucideAngularModule, RouterLink, FormField],
   templateUrl: './sign-up.html',
   styleUrl: './sign-up.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
