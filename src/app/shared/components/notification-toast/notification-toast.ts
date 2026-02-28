@@ -17,7 +17,7 @@ export class NotificationToast {
   ngOnInit() {
     setTimeout(() => {
       this.startExit();
-    }, 3700);
+    }, 4000);
   }
 
   private startExit() {

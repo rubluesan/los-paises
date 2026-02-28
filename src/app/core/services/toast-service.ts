@@ -12,8 +12,6 @@ export class ToastService {
   showMessage(msg: string, error = false) {
     this.message.set(msg);
     this.isError.set(error);
-    // Opcional: Auto-cerrar tras 3 segundos
-    setTimeout(() => this.clear(), 4000);
   }
 
   clear() {
