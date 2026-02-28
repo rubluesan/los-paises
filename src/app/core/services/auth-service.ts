@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import { RegisterData } from '../models/auth/RegisterData';
 import { AuthResponse } from '../models/auth/AuthResponse';
 import { UserInfo } from '../models/auth/UserInfo';
+import { LoginData } from '../models/auth/LoginData';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +35,20 @@ export class AuthService {
     return this.http.get<UserInfo>(environment.apiUrl + '/user', {
       observe: 'response',
     });
+  }
+
+  public login(loginData: LoginData): Observable<HttpResponse<AuthResponse>> {
+    return this.http
+      .post<AuthResponse>(environment.apiUrl + '/login', loginData, {
+        observe: 'response',
+      })
+      .pipe(
+        tap((response) => {
+          if (response.body?.access_token) {
+            this.saveSession(response.body.access_token);
+          }
+        }),
+      );
   }
 
   private saveSession(access_token: string) {
