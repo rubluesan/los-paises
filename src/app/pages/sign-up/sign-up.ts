@@ -15,6 +15,7 @@ import {
 import { AuthService } from '../../core/services/auth-service';
 import { RegisterData } from '../../core/models/auth/RegisterData';
 import { NotificationToast } from '../../shared/components/notification-toast/notification-toast';
+import { ToastService } from '../../core/services/toast-service';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,12 +27,11 @@ import { NotificationToast } from '../../shared/components/notification-toast/no
 export class SignUp {
   private router = inject(Router);
   private authService = inject(AuthService);
+  private toastService = inject(ToastService);
 
   email = '';
   password = '';
   loading = signal(false); // Estado para mostrar el spinner en el botón
-  message = signal(''); // Mensaje para el usuario (éxito o error)
-  isError = signal(false);
 
   registerModel = signal<RegisterData>({
     email: '',
@@ -67,37 +67,31 @@ export class SignUp {
 
   async handleAuth() {
     this.loading.set(true);
-    this.message.set('');
 
     const data = this.registerForm().value();
     if (this.registerForm().invalid()) {
-      this.isError.set(true);
-      this.message.set(
+      this.toastService.showMessage(
         'Hay campos inválidos. Por favor, revise el email y contraseña introducidos.',
+        true,
       );
       return;
     }
 
     this.authService.register(data).subscribe({
-      next: (response) => {
-        this.isError.set(false);
-        this.message.set('Registrado con Éxito');
+      next: () => {
+        this.toastService.showMessage('Registrado con Éxito', false);
         this.loading.set(false);
-
         this.router.navigate(['/profile']);
       },
       error: (error) => {
-        this.isError.set(true);
         if (error.status === 422) {
           const backendMessage = error.error.errors?.email?.[0] || 'Este email ya está en uso';
-          this.message.set(backendMessage);
+          this.toastService.showMessage(backendMessage, true);
         } else {
-          this.message.set('Ocurrió un error inesperado: ' + error.error);
+          this.toastService.showMessage('Ocurrió un error inesperado: ' + error.error, true);
         }
         this.loading.set(false);
       },
     });
-
-    // this.router.navigate(['/countries']);
   }
 }

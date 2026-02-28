@@ -46,7 +46,7 @@ export class SignIn {
     }
 
     this.authService.login(data).subscribe({
-      next: (response) => {
+      next: () => {
         this.toastService.showMessage('Iniciada Sesión con éxito.', false);
         this.loading.set(false);
 
