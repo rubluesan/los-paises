@@ -6,6 +6,8 @@ import { NgOptimizedImage } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { ReviewsSection } from './components/reviews-section/reviews-section';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CountryStatsService } from '../../core/services/country-stats-service';
+import { CountryStats } from '../../core/models/CountryStats';
 @Component({
   selector: 'app-country-detail',
   imports: [NgOptimizedImage, LucideAngularModule, RouterLink, ReviewsSection],
@@ -15,10 +17,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class CountryDetail implements OnInit {
   private countryService = inject(CountryService);
   private route = inject(ActivatedRoute);
+  private countryStatsService = inject(CountryStatsService);
 
   country = signal<Country | null>(null);
   isLoading = signal<boolean>(true);
   error = signal<string | null>(null);
+  countryStats = signal<CountryStats | null>(null);
 
   mapUrl: SafeResourceUrl | undefined;
 
@@ -26,6 +30,18 @@ export class CountryDetail implements OnInit {
 
   ngOnInit() {
     const countryCode = this.route.snapshot.params['code'];
+
+    this.countryStatsService.getById(countryCode).subscribe({
+      next: (data) => {
+        this.countryStats.set(data.body?.data!);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        this.error.set('No se pudieron encontrar estadísticas del país');
+        this.isLoading.set(false);
+      },
+    });
+
     this.countryService.getByCode(countryCode).subscribe({
       next: (data) => {
         this.country.set(data);
