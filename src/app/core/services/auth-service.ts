@@ -63,9 +63,7 @@ export class AuthService {
     });
   }
 
-  public deleteUser(): Observable<HttpResponse<AuthMessageResponse>> {
-    return this.http.delete<AuthMessageResponse>(environment.apiUrl + '/user', {
-      observe: 'response',
-    });
+  public deleteUser(): Observable<AuthMessageResponse> {
+    return this.http.delete<AuthMessageResponse>(environment.apiUrl + '/user');
   }
 }
