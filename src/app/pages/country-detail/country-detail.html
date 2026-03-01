@@ -16,11 +16,9 @@
         <div class="hero-stats flex-align-center">
           <div class="rating-badge-lg flex-align-center shadow-md">
             <lucide-icon name="star" class="star-icon"></lucide-icon>
-            <span>{{ countryStats()?.avg_rating }}</span>
-            <!-- TODO -STATS- avg de las valoraciones -->
+            <span>{{ countryStats()?.total_reviews ? countryStats()?.avg_rating?.toFixed(1) : 'N/A' }}</span>
           </div>
           <span class="reviews-count">{{ countryStats()?.total_reviews }} valoraciones</span>
-          <!-- TODO -STATS- conteo valoraciones dinamico-->
         </div>
       </div>
     </div>
@@ -52,7 +50,7 @@
     </div>
 
     @if (country()) {
-    <app-reviews-section [country]="country()"></app-reviews-section>
+    <app-reviews-section [country]="country()" (onReviewPosted)="updateCountryStats()"></app-reviews-section>
     }
   </div>
 </div>

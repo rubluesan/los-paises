@@ -26,6 +26,7 @@ export class UserMenu implements OnInit {
     this.authService.getUserInfo().subscribe({
       next: (data) => {
         this.user.set(data);
+        this.authService.userInfo.set(data);
       },
       error: (error) => {
         // errores

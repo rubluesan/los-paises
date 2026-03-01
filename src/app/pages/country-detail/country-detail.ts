@@ -31,16 +31,7 @@ export class CountryDetail implements OnInit {
   ngOnInit() {
     const countryCode = this.route.snapshot.params['code'];
 
-    this.countryStatsService.getById(countryCode).subscribe({
-      next: (data) => {
-        this.countryStats.set(data.body?.data!);
-        this.isLoading.set(false);
-      },
-      error: (err) => {
-        this.error.set('No se pudieron encontrar estadísticas del país');
-        this.isLoading.set(false);
-      },
-    });
+    this.updateCountryStats();
 
     this.countryService.getByCode(countryCode).subscribe({
       next: (data) => {
@@ -67,5 +58,19 @@ export class CountryDetail implements OnInit {
       { icon: 'users', label: 'Población', value: c.population.toLocaleString() },
       { icon: 'map-pin', label: 'Región', value: c.region },
     ];
+  }
+
+  updateCountryStats() {
+    const countryCode = this.route.snapshot.params['code'];
+    this.countryStatsService.getById(countryCode).subscribe({
+      next: (data) => {
+        this.countryStats.set(data.body?.data!);
+        this.isLoading.set(false);
+      },
+      error: (err) => {
+        this.error.set('No se pudieron encontrar estadísticas del país');
+        this.isLoading.set(false);
+      },
+    });
   }
 }
