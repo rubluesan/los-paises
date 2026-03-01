@@ -79,6 +79,6 @@ export class Countries implements OnInit {
 
   getRating(code: string): string {
     const stat = this.allCountryStats().find((s) => s.country_id === code);
-    return stat ? stat.avg_rating.toFixed(1) : 'N/A';
+    return stat?.total_reviews ? stat.avg_rating.toFixed(1) : 'N/A';
   }
 }
