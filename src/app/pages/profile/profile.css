@@ -150,8 +150,8 @@ input {
     padding: var(--spacing-lg) 0;
   }
   .card {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
+    border-radius: var(--radius-md);
+    /* border-left: none;
+    border-right: none; */
   }
 }
