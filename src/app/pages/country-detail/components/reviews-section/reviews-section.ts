@@ -6,12 +6,12 @@ import { Review } from '../../../../core/models/Review';
 import { FormsModule } from '@angular/forms';
 import { ReviewService } from '../../../../core/services/review-service';
 import { ToastService } from '../../../../core/services/toast-service';
-import { Profile } from '../../../../core/models/Profile';
 import { PostReview } from '../../../../core/models/PostReview';
+import { form, FormField, min, required } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-reviews-section',
-  imports: [LucideAngularModule, NgOptimizedImage, DatePipe, FormsModule],
+  imports: [LucideAngularModule, NgOptimizedImage, DatePipe, FormsModule, FormField],
   templateUrl: './reviews-section.html',
   styleUrl: './reviews-section.css',
 })
@@ -24,16 +24,21 @@ export class ReviewsSection implements OnInit {
   reviews = signal<Review[]>([]);
 
   submitting = signal(false);
-  userRating = signal(0);
-  userComment = signal('');
-  userProfile = signal<Profile>({} as Profile);
 
-  userReview = computed<PostReview>(() => {
-    return {
-      country_id: this.country()?.cca3,
-      rating: this.userRating(),
-      comment: this.userComment(),
-    } as PostReview;
+  reviewFormModel = signal<PostReview>({
+    country_id: '',
+    rating: 0,
+    comment: '',
+  });
+
+  reviewForm = form(this.reviewFormModel, (schemaPath) => {
+    required(schemaPath.rating, {
+      message: 'Debes valorar de 1 a 5 estrellas (Haciendo click sobre ellas).',
+    });
+    min(schemaPath.rating, 1, {
+      message: 'Debes valorar de 1 a 5 estrellas (Haciendo click sobre ellas).',
+    });
+    required(schemaPath.comment, { message: 'Debes introducir un comentario.' });
   });
 
   ngOnInit(): void {
@@ -48,22 +53,45 @@ export class ReviewsSection implements OnInit {
   }
 
   handleFormSubmit() {
-    if (!this.userRating() || !this.userComment().trim()) {
+    if (this.reviewForm().invalid()) {
+      this.toastService.showMessage(
+        'Debe introducir la valoración y el comentario para publicar.',
+        true,
+      );
       return;
     }
     this.submitReview();
   }
 
   submitReview() {
-    this.reviewService.postReview(this.userReview()).subscribe({
+    this.reviewForm.country_id().value.set(this.country()?.cca3!);
+    const reviewData = this.reviewForm().value();
+    this.submitting.set(true);
+
+    this.reviewService.postReview(reviewData).subscribe({
       next: (response) => {
         this.reviews.update((reviews) => {
           return [response.body?.data!, ...reviews];
         });
+
+        // Reset del formulario
+        this.reviewFormModel.set({
+          country_id: '',
+          rating: 0,
+          comment: '',
+        });
+
         this.onReviewPosted.emit();
+        this.submitting.set(false);
+        this.toastService.showMessage('Reseña publicada con éxito', false);
       },
       error: (error) => {
-        this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
+        this.submitting.set(false);
+        if (error.status === 401) {
+          this.toastService.showMessage('Debes iniciar sesión para poder publicar', true);
+        } else {
+          this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
+        }
       },
     });
   }

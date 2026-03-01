@@ -8,16 +8,29 @@
       <span class="font-bold">Tu valoración:</span>
       <div class="stars flex-align-center">
         @for (s of [1, 2, 3, 4, 5]; track s) {
-        <lucide-icon name="star" [class.active]="s <= userRating()" (click)="userRating.set(s)"
-          class="star-input smooth-transition"></lucide-icon>
+        <lucide-icon name="star" [class.active]="s <= reviewForm.rating().value()"
+          (click)="reviewForm.rating().value.set(s)" class="star-input smooth-transition"></lucide-icon>
         }
       </div>
     </div>
 
     <div class="textarea-wrapper">
-      <textarea [(ngModel)]="userComment" placeholder="Cuéntanos tu experiencia..." rows="4" class="smooth-transition"
-        style="resize: none;"></textarea>
-      <!-- TODO mostrar errores de validación -->
+      <textarea placeholder="Cuéntanos tu experiencia..." rows="4" class="smooth-transition" style="resize: none;"
+        [formField]="reviewForm.comment"></textarea>
+      @if (reviewForm.rating().invalid()) {
+      <ul class="validation-error-list">
+        @for (error of reviewForm.rating().errors(); track error.kind) {
+        <li class="validation-error">{{ error.message }}</li>
+        }
+      </ul>
+      }
+      @if (reviewForm.comment().invalid()) {
+      <ul class="validation-error-list">
+        @for (error of reviewForm.comment().errors(); track error.kind) {
+        <li class="validation-error">{{ error.message }}</li>
+        }
+      </ul>
+      }
     </div>
 
     <div class="form-actions">
