@@ -3,7 +3,7 @@
     <h2>Comparte tu opinión sobre: {{ country()?.translations?.spa?.common }}.</h2>
   </div>
 
-  <div class="add-review-card shadow-sm" [class.shake]="isShaking()">
+  <div class="add-review-card shadow-sm">
     <div class="rating-input flex-align-center">
       <span class="font-bold">Tu valoración:</span>
       <div class="stars flex-align-center">
@@ -15,13 +15,9 @@
     </div>
 
     <div class="textarea-wrapper">
-      <textarea [(ngModel)]="userComment" placeholder="Cuéntanos tu experiencia..." rows="4"
-        [class.error-border]="showValidationErrors() && !userComment()" class="smooth-transition"></textarea>
-      @if (showValidationErrors() && (!userRating() || !userComment())) {
-      <span class="error-hint">
-        Por favor, completa la valoración y el comentario.
-      </span>
-      }
+      <textarea [(ngModel)]="userComment" placeholder="Cuéntanos tu experiencia..." rows="4" class="smooth-transition"
+        style="resize: none;"></textarea>
+      <!-- TODO mostrar errores de validación -->
     </div>
 
     <div class="form-actions">
@@ -44,16 +40,16 @@
     @for (review of reviews(); track review.id) {
     <div class="comment-item fade-in">
       <div class="comment-header flex-align-center">
-        <div class="avatar-container shadow-sm">
-          @if (review.profiles?.avatar_url) {
-          <img [ngSrc]="review.profiles?.avatar_url || ''" alt="Avatar" loading="lazy" />
+        <div class="avatar-container">
+          @if (review.user.avatar_url) {
+          <img [ngSrc]="review.user.avatar_url || ''" alt="Avatar" loading="lazy" width="48" height="48" />
           } @else {
-          <span>{{ review.profiles?.username?.[0]?.toUpperCase() || 'U' }}</span>
+          <span>{{ review.user.username.toUpperCase() || 'U' }}</span>
           }
         </div>
         <div class="user-meta">
           <span class="username">{{
-            review.profiles?.username || 'Viajero anónimo'
+            review.user.username || 'Viajero anónimo'
             }}</span>
           <span class="date">{{ review.created_at | date: 'longDate' }}</span>
         </div>
