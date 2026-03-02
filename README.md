@@ -14,7 +14,7 @@
 
   <p align="justify">LosPaises es una aplicación sencilla para calificar y dejar un comentario sobre los países que amas u odias.</p>
 
-<a href="...TODO">Demo is WIP</a>
+<a href="https://los-paises.netlify.app/">See Demo</a>
 <br/>
 
 </div>
@@ -49,7 +49,7 @@
 
 ## Acerca del proyecto
 
-[![LosPaises Screen Shot](https://i.imgur.com/...TODO)](#)
+[![LosPaises Screen Shot](docs/img/los-paises-screenshot.png)](#)
 
 LosPaises es un proyecto de desarrollo web en el entorno cliente. Surge de una asignatura de la formación profesional que estoy cursando. Está pensado para practicar el uso de Angular. Con la idea de aprender a desarrollar proyectos Front-end de manera profesional.
 
@@ -173,6 +173,6 @@ No se ha determinado licencia todavía. <!-- See `LICENSE.txt` for more informat
 
 Rubén Luengo - rubluesan2@alu.edu.gva.es
 
-Project Link: [https://github.com/](https://github.com/SalvadorGadea-DWEC-2526/proyecto-final-rubluesan)
+Project Link: [https://github.com/rubluesan/los-paises](https://github.com/rubluesan/los-paises)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
