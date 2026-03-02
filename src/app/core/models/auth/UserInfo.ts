@@ -1,6 +1,6 @@
-import { Profile } from '../Profile';
+import { ProfileData } from '../ProfileData';
 
 export interface UserInfo {
   email: string;
-  profile: Profile;
+  profile: ProfileData;
 }

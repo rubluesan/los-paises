@@ -45,15 +45,23 @@
               <label for="username">Nombre de usuario</label>
               <div class="input-wrapper smooth-transition">
                 <lucide-icon name="users" class="input-icon"></lucide-icon>
-                <input type="text" id="username" placeholder="Tu nombre público" />
+                <input type="text" id="username" placeholder="Tu nombre público"
+                  [formField]="profileInfoForm.username" />
               </div>
               <p class="input-hint">
                 Este es el nombre que verán otros viajeros en tus reseñas.
               </p>
+              @if (profileInfoForm.username().invalid() && profileInfoForm.username().touched()) {
+              <ul class="validation-error-list">
+                @for (error of profileInfoForm.username().errors(); track error.kind) {
+                <li class="validation-error">{{ error.message }}</li>
+                }
+              </ul>
+              }
             </div>
 
             <div class="form-actions">
-              <button class="btn btn-primary flex-align-center smooth-transition">
+              <button class="btn btn-primary flex-align-center smooth-transition" (click)="updateProfile()">
                 <lucide-icon name="save" class="icon-sm"></lucide-icon>
                 <span>Guardar cambios</span>
               </button>

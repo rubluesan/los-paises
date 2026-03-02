@@ -1,4 +1,4 @@
-import { Profile } from '../Profile';
+import { ProfileData } from '../ProfileData';
 
 export interface Review {
   id: string;
@@ -6,5 +6,5 @@ export interface Review {
   rating: number;
   comment: string;
   created_at: string;
-  user: Profile;
+  user: ProfileData;
 }
