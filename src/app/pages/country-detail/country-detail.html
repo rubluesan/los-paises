@@ -50,7 +50,8 @@
     </div>
 
     @if (country()) {
-    <app-reviews-section [country]="country()" (onReviewPosted)="updateCountryStats()"></app-reviews-section>
+    <app-reviews-section [country]="country()" (onReviewPosted)="updateCountryStats()"
+      (onReviewDeleted)="updateCountryStats()"></app-reviews-section>
     }
   </div>
 </div>

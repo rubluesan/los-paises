@@ -71,7 +71,16 @@
           <span>{{ review.rating }}</span>
         </div>
       </div>
-      <p class="comment-text">{{ review.comment }}</p>
+      <div style="display: flex; gap: 1rem; justify-content: space-between;">
+        <p class="comment-text">{{ review.comment }}</p>
+        @if (currentUserInfo() && review.user.id === currentUserInfo()?.profile?.id) {
+        <button class="btn btn-danger delete-review-icon flex-align-center smooth-transition"
+          (click)="deleteReview(review.id)">
+          <lucide-icon name="trash-2" class="icon-sm"></lucide-icon>
+        </button>
+        }
+      </div>
+
     </div>
     } @empty {
     <div class="empty-comments fade-in">

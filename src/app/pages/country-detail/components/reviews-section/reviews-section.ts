@@ -1,13 +1,15 @@
 import { DatePipe, NgOptimizedImage } from '@angular/common';
-import { Component, computed, inject, input, OnInit, output, signal } from '@angular/core';
+import { Component, inject, input, OnInit, output, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Country } from '../../../../core/models/Country';
-import { Review } from '../../../../core/models/Review';
+import { Review } from '../../../../core/models/reviews/Review';
 import { FormsModule } from '@angular/forms';
 import { ReviewService } from '../../../../core/services/review-service';
 import { ToastService } from '../../../../core/services/toast-service';
-import { PostReview } from '../../../../core/models/PostReview';
+import { PostReview } from '../../../../core/models/reviews/PostReview';
 import { form, FormField, min, required } from '@angular/forms/signals';
+import { AuthService } from '../../../../core/services/auth-service';
+import { UserInfo } from '../../../../core/models/auth/UserInfo';
 
 @Component({
   selector: 'app-reviews-section',
@@ -18,9 +20,13 @@ import { form, FormField, min, required } from '@angular/forms/signals';
 export class ReviewsSection implements OnInit {
   private reviewService = inject(ReviewService);
   private toastService = inject(ToastService);
+  private authService = inject(AuthService);
+
+  currentUserInfo = signal<UserInfo | null>(null);
 
   country = input<Country | null>(null);
   onReviewPosted = output();
+  onReviewDeleted = output();
   reviews = signal<Review[]>([]);
 
   submitting = signal(false);
@@ -45,6 +51,15 @@ export class ReviewsSection implements OnInit {
     this.reviewService.getAllByCountry(this.country()!.cca3).subscribe({
       next: (response) => {
         this.reviews.set(response.body?.data!);
+      },
+      error: (error) => {
+        this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
+      },
+    });
+
+    this.authService.getUserInfo().subscribe({
+      next: (data) => {
+        this.currentUserInfo.set(data);
       },
       error: (error) => {
         this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
@@ -92,6 +107,22 @@ export class ReviewsSection implements OnInit {
         } else {
           this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
         }
+      },
+    });
+  }
+
+  deleteReview(id: string) {
+    this.reviewService.deleteById(id).subscribe({
+      next: (response) => {
+        this.reviews.update((reviews) => {
+          return [...reviews.filter((r) => r.id !== id)];
+        });
+
+        this.onReviewDeleted.emit();
+        this.toastService.showMessage(response.body?.message!, false);
+      },
+      error: (error) => {
+        this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
       },
     });
   }

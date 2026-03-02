@@ -1,12 +1,12 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { computed, inject, Injectable, OnInit, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { RegisterData } from '../models/auth/RegisterData';
 import { AuthResponse } from '../models/auth/AuthResponse';
 import { UserInfo } from '../models/auth/UserInfo';
 import { LoginData } from '../models/auth/LoginData';
-import { AuthMessageResponse } from '../models/auth/AuthMessageResponse';
+import { MessageResponse } from '../models/MessageResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -52,18 +52,34 @@ export class AuthService {
       );
   }
 
+  public logout(): Observable<MessageResponse> {
+    return this.http
+      .post<MessageResponse>(environment.apiUrl + '/logout', {
+        observe: 'response',
+      })
+      .pipe(
+        tap(() => {
+          this.clearSession();
+        }),
+      );
+  }
+
+  public deleteUser(): Observable<MessageResponse> {
+    return this.http.delete<MessageResponse>(environment.apiUrl + '/user').pipe(
+      tap(() => {
+        this.clearSession();
+      }),
+    );
+  }
+
   private saveSession(access_token: string) {
     localStorage.setItem('auth_token', access_token);
     this.userSession.set(access_token);
   }
 
-  public logout(): Observable<AuthMessageResponse> {
-    return this.http.post<AuthMessageResponse>(environment.apiUrl + '/logout', {
-      observe: 'response',
-    });
-  }
-
-  public deleteUser(): Observable<AuthMessageResponse> {
-    return this.http.delete<AuthMessageResponse>(environment.apiUrl + '/user');
+  private clearSession() {
+    localStorage.removeItem('auth_token');
+    this.userSession.set(null);
+    this.userInfo.set(null);
   }
 }

@@ -99,3 +99,8 @@ textarea {
   width: 16px;
   height: 16px;
 }
+
+.delete-review-icon {
+  padding: 0.2rem 1rem;
+  border-radius: var(--radius-full);
+}

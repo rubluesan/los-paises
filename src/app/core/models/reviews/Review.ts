@@ -1,4 +1,4 @@
-import { Profile } from '../models/Profile';
+import { Profile } from '../Profile';
 
 export interface Review {
   id: string;

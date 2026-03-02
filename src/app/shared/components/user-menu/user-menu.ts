@@ -57,8 +57,8 @@ export class UserMenu implements OnInit {
   signOut() {
     this.authService.logout().subscribe({
       next: (response) => {
-        localStorage.removeItem('auth_token');
-        this.authService.userSession.set(null);
+        // localStorage.removeItem('auth_token');
+        // this.authService.userSession.set(null);
         this.toastService.showMessage(response.message, false);
         this.router.navigate(['/auth/signIn']);
       },
