@@ -14,7 +14,10 @@
 
   <p align="justify">LosPaises es una aplicación sencilla para calificar y dejar un comentario sobre los países que amas u odias.</p>
 
-<a href="https://los-paises.netlify.app/">See Demo</a>
+### <a href="https://los-paises.netlify.app/">See Demo</a>
+
+### Deploy Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/e7e20e63-ef98-470e-a436-89278e9d355c/deploy-status)](https://app.netlify.com/projects/los-paises/deploys)
+
 <br/>
 
 </div>
