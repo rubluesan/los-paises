@@ -17,8 +17,8 @@ export class SignIn {
   private authService = inject(AuthService);
   private toastService = inject(ToastService);
 
-  email = '';
-  password = '';
+  // email = '';
+  // password = '';
   loading = signal(false); // Estado para mostrar el spinner en el botón
 
   loginModel = signal<LoginData>({
