@@ -3,3 +3,8 @@
   to = "http://44.212.243.127/api/:splat"
   status = 200
   force = true
+
+  [[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
