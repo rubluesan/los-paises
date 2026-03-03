@@ -52,8 +52,11 @@
         }
       </div>
 
-      <button type="button" class="btn btn-primary btn-block smooth-transition" (click)="handleAuth()">
-        <span>Registrar</span>
+      <button type="button" class="btn btn-primary btn-block smooth-transition" (click)="handleAuth()"
+        [disabled]="loading()">
+        <lucide-icon [name]="loading() ? 'loader-2' : 'send'" [class.animate-spin]="loading()"
+          class="icon-sm"></lucide-icon>
+        <span>{{ loading() ? 'Registrando...' : 'Registrar' }}</span>
       </button>
     </form>
 

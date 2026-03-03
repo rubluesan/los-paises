@@ -232,3 +232,18 @@ lucide-icon {
   border: 4px solid var(--surface);
   outline: 1px solid var(--border);
 }
+
+/* animacion spin para cargas */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
