@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import {
@@ -15,6 +15,7 @@ import {
 import { AuthService } from '../../core/services/auth-service';
 import { RegisterData } from '../../core/models/auth/RegisterData';
 import { ToastService } from '../../core/services/toast-service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -23,7 +24,9 @@ import { ToastService } from '../../core/services/toast-service';
   styleUrl: './sign-up.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignUp {
+export class SignUp implements OnInit {
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
   private router = inject(Router);
   private authService = inject(AuthService);
   private toastService = inject(ToastService);
@@ -63,6 +66,20 @@ export class SignUp {
       return null;
     });
   });
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Registro | Los Países');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Crea tu cuenta de Los Países.',
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
+    });
+  }
 
   async handleAuth() {
     this.loading.set(true);

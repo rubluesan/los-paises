@@ -5,7 +5,7 @@ import { Country } from '../../core/models/Country';
 import { NgOptimizedImage } from '@angular/common';
 import { LucideAngularModule } from 'lucide-angular';
 import { ReviewsSection } from './components/reviews-section/reviews-section';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeResourceUrl, Title } from '@angular/platform-browser';
 import { CountryStatsService } from '../../core/services/country-stats-service';
 import { CountryStats } from '../../core/models/CountryStats';
 @Component({
@@ -15,6 +15,8 @@ import { CountryStats } from '../../core/models/CountryStats';
   styleUrl: './country-detail.css',
 })
 export class CountryDetail implements OnInit {
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
   private countryService = inject(CountryService);
   private route = inject(ActivatedRoute);
   private countryStatsService = inject(CountryStatsService);
@@ -29,6 +31,18 @@ export class CountryDetail implements OnInit {
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+    this.titleService.setTitle(`${this.country()?.translations.spa.common} | Los Países`);
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: `Descubre toda la información sobre ${this.country()?.translations.spa.common}. Consulta sus datos principales, explora las opiniones de otros usuarios y deja tu propia reseña.`,
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
+    });
+
     const countryCode = this.route.snapshot.params['code'];
 
     this.updateCountryStats();

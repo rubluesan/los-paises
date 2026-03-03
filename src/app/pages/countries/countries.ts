@@ -46,9 +46,15 @@ export class Countries implements OnInit {
 
   ngOnInit() {
     this.titleService.setTitle('Explorar | Los Países');
+
     this.metaService.updateTag({
       name: 'description',
       content: 'Explora la lista de países. Elige uno para compartir tu opinión con la comunidad.',
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
     });
 
     this.countryStatsService.getAll().subscribe({

@@ -1,10 +1,11 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth-service';
 import { LoginData } from '../../core/models/auth/LoginData';
 import { FormField, email, form, maxLength, minLength, required } from '@angular/forms/signals';
 import { ToastService } from '../../core/services/toast-service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,13 +13,13 @@ import { ToastService } from '../../core/services/toast-service';
   templateUrl: './sign-in.html',
   styleUrl: './sign-in.css',
 })
-export class SignIn {
+export class SignIn implements OnInit {
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
   private router = inject(Router);
   private authService = inject(AuthService);
   private toastService = inject(ToastService);
 
-  // email = '';
-  // password = '';
   loading = signal(false); // Estado para mostrar el spinner en el botón
 
   loginModel = signal<LoginData>({
@@ -32,6 +33,20 @@ export class SignIn {
 
     required(schemaPath.password, { message: 'La contraseña es obligatoria' });
   });
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Inicio de Sesión | Los Países');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Entra en tu cuenta de Los Países.',
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
+    });
+  }
 
   async handleAuth() {
     this.loading.set(true);

@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../core/services/auth-service';
@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ProfileService } from '../../core/services/profile-service';
 import { Username } from '../../core/models/ProfileData';
 import { form, required, FormField } from '@angular/forms/signals';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,9 @@ import { form, required, FormField } from '@angular/forms/signals';
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
-export class Profile {
+export class Profile implements OnInit {
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
   profileService = inject(ProfileService);
   authService = inject(AuthService);
   toastService = inject(ToastService);
@@ -32,6 +35,18 @@ export class Profile {
   });
 
   ngOnInit(): void {
+    this.titleService.setTitle('Mi Perfil | Los Países');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Gestiona tu cuenta e información personal, y mantén tu perfil actualizado.',
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
+    });
+
     this.refreshUserInfo();
   }
 
