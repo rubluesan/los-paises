@@ -166,7 +166,15 @@ export class CountryService {
 
 Para gestionar todos los datos de la aplicación (usuarios, reseñas y perfiles), he desarrollado una API REST propia utilizando el framework **Laravel**. Y la he desplegado en una instancia EC2 de **AWS (Amazon Web Services)** para que sea accesible desde cualquier lugar.
 
-#### Configuración Base
+#### Servicios implementados para integrar: (click a los enlaces para ver el código)
+
+- [`AuthService - Servicio para la gestión de usuarios`](../src/app/core/services/auth-service.ts)
+- [`CountryStatsService - Servicio que lleva las estadísticas de los paises`](../src/app/core/services/country-stats-service.ts)
+- [`ProfileService - Servicio para gestionar la información del perfil de usuario`](../src/app/core/services/profile-service.ts)
+- [`ReviewService - Servicio CRUD de las reseñas de los usuarios`](../src/app/core/services/review-service.ts)
+- [`ToastService - Servicio que centraliza las notificaciones del sistema`](../src/app/core/services/toast-service.ts)
+
+#### Configuración Base de la API
 
 - **URL Base:** `https://los-paises.publicvm.com/api`
 - **Formato de datos:** JSON (es obligatorio enviar la cabecera `Accept: application/json`).
