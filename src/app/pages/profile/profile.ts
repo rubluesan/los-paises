@@ -9,10 +9,11 @@ import { ProfileService } from '../../core/services/profile-service';
 import { Username } from '../../core/models/ProfileData';
 import { form, required, FormField } from '@angular/forms/signals';
 import { Meta, Title } from '@angular/platform-browser';
+import { ConfirmDeleteModal } from '../../shared/components/confirm-delete-modal/confirm-delete-modal';
 
 @Component({
   selector: 'app-profile',
-  imports: [LucideAngularModule, FormsModule, FormField],
+  imports: [LucideAngularModule, FormsModule, FormField, ConfirmDeleteModal],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -25,6 +26,7 @@ export class Profile implements OnInit {
   private router = inject(Router);
 
   user = signal<UserInfo | null>(null);
+  showModal = signal(false);
 
   profileInfoModel = signal<Username>({
     username: '',

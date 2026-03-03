@@ -1,0 +1,20 @@
+<div class="modal-backdrop">
+  <div class="modal-content">
+    <h3>¿Estás seguro?</h3>
+    <p style="text-align: left;">Esta acción no se puede deshacer. Esto eliminará permanentemente tu usuario
+      <strong>{{ targetName() }}.</strong>
+    </p>
+
+    <p style="text-align: left;">Por favor, escribe <strong>{{ confirmWord }}</strong> para confirmar.</p>
+
+    <input type="text" [(ngModel)]="userInput" (input)="checkInput()" placeholder="Escribe aquí..."
+      class="confirm-input" />
+
+    <div class="actions">
+      <button (click)="onCancel.emit()" class="btn btn-primary">Cancelar</button>
+      <button [disabled]="!isConfirmed()" (click)="onConfirm.emit()" class="btn btn-danger">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>

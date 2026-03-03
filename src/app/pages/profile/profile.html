@@ -75,13 +75,16 @@
 
           <div class="settings-form">
             <div class="form-actions">
-              <button class="btn btn-danger flex-align-center smooth-transition" (click)="deleteAccount()">
+              <button class="btn btn-danger flex-align-center smooth-transition" (click)="showModal.set(true)">
                 <lucide-icon name="trash-2" class="icon-sm"></lucide-icon>
                 <span>Eliminar mi cuenta</span>
               </button>
-              <!--  TODO - (click)="deleteUser()" -->
             </div>
           </div>
+          @if (showModal()) {
+          <app-confirm-delete-modal [targetName]="user()?.profile?.username!" (onConfirm)="deleteAccount()"
+            (onCancel)="showModal.set(false)" />
+          }
 
 
         </div>

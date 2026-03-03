@@ -1,0 +1,44 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+  border: 2px solid var(--primary);
+}
+
+.confirm-input {
+  width: 100%;
+  padding: 10px;
+  margin: 1rem 0;
+  background-color: var(--background);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  outline: none;
+}
+
+.confirm-input:focus-within {
+  border-color: var(--primary);
+}
+
+.btn-danger:disabled {
+  background-color: #ea9a9e;
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
