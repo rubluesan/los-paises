@@ -45,6 +45,50 @@
   }
 }
 
+.filter-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.select-box {
+  flex: 1; /* El select crece para ocupar el espacio en su grupo */
+}
+
+/* Estilos para los botones de orden */
+.sort-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  height: 48px; /* Altura igual a tus inputs */
+  width: 48px;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-muted);
+}
+
+.sort-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(14, 165, 233, 0.05);
+}
+
+.sort-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* Ajuste para que el input/select no se vea apretado */
+input,
+select {
+  padding: 12px var(--spacing-sm) !important;
+}
+
 .search-box,
 .filter-box {
   display: flex;

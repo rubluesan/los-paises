@@ -11,6 +11,7 @@ import { FilterByContinentPipe } from '../../core/pipes/filter-by-continent-pipe
 import { FormsModule } from '@angular/forms';
 import { CountryStats } from '../../core/models/CountryStats';
 import { CountryStatsService } from '../../core/services/country-stats-service';
+import { SortAlphabeticallyPipe } from '../../core/pipes/sort-alphabetically-pipe';
 
 @Component({
   selector: 'app-countries',
@@ -22,6 +23,7 @@ import { CountryStatsService } from '../../core/services/country-stats-service';
     FilterByNamePipe,
     FilterByContinentPipe,
     FormsModule,
+    SortAlphabeticallyPipe,
   ],
   templateUrl: './countries.html',
   styleUrl: './countries.css',
@@ -43,6 +45,8 @@ export class Countries implements OnInit {
 
   countryStatsService = inject(CountryStatsService);
   allCountryStats = signal<CountryStats[]>([]);
+
+  currentOrder = signal<string>('asc');
 
   ngOnInit() {
     this.titleService.setTitle('Explorar | Los Países');
@@ -86,5 +90,9 @@ export class Countries implements OnInit {
   getRating(code: string): string {
     const stat = this.allCountryStats().find((s) => s.country_id === code);
     return stat?.total_reviews ? stat.avg_rating.toFixed(1) : 'N/A';
+  }
+
+  setOrder(order: 'asc' | 'desc') {
+    this.currentOrder.set(order);
   }
 }

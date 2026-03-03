@@ -34,8 +34,9 @@ import {
   CircleAlert,
   CircleCheck,
   Settings,
-  Delete,
   Trash2,
+  ArrowDownAZ,
+  ArrowUpAZ,
 } from 'lucide-angular';
 
 export const myLucideIcons = {
@@ -74,4 +75,6 @@ export const myLucideIcons = {
   CircleCheck,
   Settings,
   Trash2,
+  ArrowDownAZ,
+  ArrowUpAZ,
 } as LucideIcons;

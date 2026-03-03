@@ -7,7 +7,7 @@
           <input type="text" placeholder="Buscar país por nombre..." [value]="searchedName()"
             [(ngModel)]="searchedName" />
         </div>
-        <div class="filter-box smooth-transition">
+        <div class="filter-box select-box smooth-transition">
           <lucide-icon name="filter" class="filter-icon"></lucide-icon>
           <select aria-label="Filtrar países por continente" [(ngModel)]="selectedContinent">
             <option value="">Todos los continentes</option>
@@ -18,13 +18,24 @@
             <option value="Oceania">Oceanía</option>
           </select>
         </div>
+
+        <div class="filter-group">
+          Ordenar Alfabeticamente:
+          <button class="sort-btn smooth-transition" (click)="setOrder('asc')" title="Orden Ascendente">
+            <lucide-icon name="arrow-up-a-z" class="filter-icon"></lucide-icon>
+          </button>
+          <button class="sort-btn smooth-transition" (click)="setOrder('desc')" title="Orden Descendente">
+            <lucide-icon name="arrow-down-a-z" class="filter-icon"></lucide-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="container countries-grid">
     @let filteredCountries =
-    (countries() ?? [] | filterByName: searchedName()) | filterByContinent: selectedContinent();
+    (countries() ?? [] | filterByName: searchedName()) | filterByContinent: selectedContinent() | sortAlphabetically :
+    currentOrder() ;
     <div class="responsive-grid">
       @defer (on idle) {
       @for (country of filteredCountries; track country.cca3) {
