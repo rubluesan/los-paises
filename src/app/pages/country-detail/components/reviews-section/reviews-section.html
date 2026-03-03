@@ -17,15 +17,11 @@
     <div class="textarea-wrapper">
       <textarea placeholder="Cuéntanos tu experiencia..." rows="4" class="smooth-transition" style="resize: none;"
         [formField]="reviewForm.comment"></textarea>
-      @if (reviewForm.rating().invalid()) {
+      @if (reviewForm.comment().invalid() && reviewForm.comment().touched()) {
       <ul class="validation-error-list">
         @for (error of reviewForm.rating().errors(); track error.kind) {
         <li class="validation-error">{{ error.message }}</li>
         }
-      </ul>
-      }
-      @if (reviewForm.comment().invalid()) {
-      <ul class="validation-error-list">
         @for (error of reviewForm.comment().errors(); track error.kind) {
         <li class="validation-error">{{ error.message }}</li>
         }

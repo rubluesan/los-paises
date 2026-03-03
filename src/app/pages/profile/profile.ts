@@ -66,7 +66,14 @@ export class Profile implements OnInit {
         this.toastService.showMessage('Perfil Actualizado con éxito', false);
       },
       error: (error) => {
-        this.toastService.showMessage(error.message, true);
+        if (error.status === 422) {
+          this.toastService.showMessage(
+            'El nombre de usuario introducido no está disponible',
+            true,
+          );
+        } else {
+          this.toastService.showMessage(error.message, true);
+        }
       },
     });
   }
