@@ -151,7 +151,5 @@ input {
   }
   .card {
     border-radius: var(--radius-md);
-    /* border-left: none;
-    border-right: none; */
   }
 }

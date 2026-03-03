@@ -37,6 +37,8 @@
 }
 
 .divider {
+  border: none;
+  height: 1px;
   background-color: var(--border);
 }
 
@@ -98,7 +100,7 @@
   background: #fee2e2;
 }
 
-/* Animaciones Angular 21 */
+/* Animaciones expand/collapse de user menu */
 .pop-in {
   animation: pop-kf 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
 }

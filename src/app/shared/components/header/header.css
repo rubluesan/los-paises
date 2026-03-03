@@ -9,7 +9,8 @@
   align-items: center;
 }
 
-/* LOGO */
+/* --- LOGO --- */
+
 .logo {
   cursor: pointer;
   user-select: none;
@@ -94,6 +95,8 @@
     z-index: 1000;
   }
 
+  /* Animaciones de entrada y salida del menú mobil/tablet */
+
   .enter-animation {
     animation: slide-in 0.3s ease-out forwards;
   }
@@ -141,6 +144,8 @@
   }
 }
 
+/* --- Links de navegación --- */
+
 .nav-link {
   color: var(--primary);
   font-weight: 700;
@@ -157,27 +162,9 @@
   background-color: var(--primary-light);
 }
 
-/* MENU USUARIO */
+/* --- MENU USUARIO --- */
 .user-menu {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-}
-
-/* user menu LOGIN - LOGOUT */
-.btn-logout {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: var(--spacing-sm);
-  border-radius: var(--radius-md);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.btn-logout:hover {
-  color: #ef4444;
-  background: #fee2e2;
 }

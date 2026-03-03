@@ -1,6 +1,5 @@
 <header class="header-content container-fluid" role="banner">
   <a class="logo flex-align-center" routerLink="/" aria-label="Volver al inicio">
-    <!-- <lucide-icon name="globe" class="icon-primary icon-lg" aria-hidden="true"></lucide-icon> -->
     <img src="assets/brand-logo.webp" alt="Logo Los Países" width="40" height="40" />
     <span class="site-title">Los Países</span>
   </a>
@@ -43,7 +42,6 @@
     </a>
   </nav>
 
-  <!-- TODO - Mostrar user-menu solo si logeado -->
   @if (userLoggedIn()) {
   <div class="user-menu">
     <app-user-menu></app-user-menu>
@@ -56,7 +54,6 @@
     <lucide-icon name="menu" class="icon-md" aria-hidden="true"> </lucide-icon>
   </button>
 
-  <!-- TODO - Mostrar solo si no logeado -->
   @if (!userLoggedIn()) {
   <button class="btn btn-primary btn-sm" (click)="login()">Iniciar Sesión</button>
   }

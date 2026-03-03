@@ -1,3 +1,5 @@
+/* --- HERO SECTION --- */
+
 .hero {
   padding: var(--spacing-xxl) 0;
   background: linear-gradient(135deg, var(--background) 0%, #ffffff 100%);
@@ -66,6 +68,8 @@
   box-shadow: var(--shadow-lg);
   object-fit: cover;
 }
+
+/* --- FEATURES SECTION --- */
 
 .features {
   padding: var(--spacing-xxl) 0;
@@ -137,6 +141,8 @@
   line-height: 1.6;
   color: var(--text-muted);
 }
+
+/* --- HERO MEDIA QUERIES --- */
 
 @media (max-width: 1024px) {
   .hero-content {

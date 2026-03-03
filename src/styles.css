@@ -204,6 +204,7 @@ lucide-icon {
   list-style: none;
 }
 
+/* Consistencia avatares */
 .avatar-container {
   width: 48px;
   height: 48px;
@@ -223,6 +224,7 @@ lucide-icon {
   height: 100%;
   object-fit: cover;
 }
+
 .avatar-lg {
   width: clamp(80px, 20vw, 110px);
   height: clamp(80px, 20vw, 110px);
