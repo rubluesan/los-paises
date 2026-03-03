@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'API_URL_PLACEHOLDER',
+  apiUrl: 'https://los-paises.publicvm.com/api',
 };
