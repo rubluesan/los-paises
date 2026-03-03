@@ -12,6 +12,7 @@
     <li><a href="#tech-stack">Stack Tecnológico</a></li>
     <li><a href="#project-structure">Estructura de Carpetas</a></li>
     <li><a href="#api-integrations">Integraciones con APIs</a></li>
+    <li><a href="#pages">Páginas y Componentes principales</a></li>
     <li>
       <a href="#decisions">Consideraciones y decisiones</a>
       <ul>
@@ -131,7 +132,7 @@ Las tecnologías que usado para desarrollar el proyecto son:
 
 La aplicación consume la API de <a href="https://restcountries.com/">**REST Countries**</a> para obtener datos de todos los países del mundo, tales como su nombre, capital, población, imagen de su bandera, etc.
 
-#### Servicio implementado para integrar: `CountryService`
+#### Servicio implementado para integrar: [`CountryService`](../src/app/core/services/country-service.ts)
 
 ```typescript
 @Injectable({
@@ -229,7 +230,7 @@ curl -X POST https://los-paises.publicvm.com/api/register \
 
 ### 4.3. IMGBB API
 
-Para gestionar el cambio de avatar (imagen de perfil) de los usuarios, la aplicación realiza dos pasos: primero sube la imagen a un servidor externo y luego guarda la url haciendo una petición PUT a la API propia (Los Paises API).
+Para gestionar el cambio de avatar (imagen de perfil) de los usuarios, he implementado dos funciones en el [`ProfileService`](../src/app/core/services/profile-service.ts) donde la aplicación realiza dos pasos: primero sube la imagen a un servidor externo y luego guarda la url haciendo una petición PUT a la API propia (Los Paises API).
 
 #### 1. Subida a ImgBB
 
@@ -263,11 +264,40 @@ public saveAvatarUrl(dataToUpdate: AvatarUrl, id: string): Observable<HttpRespon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- Páginas y componentes -->
+
+<a id="pages"></a>
+
+## 5. Páginas y componentes principales
+
+La aplicación tiene las siguientes páginas(también son componentes) y componentes. Puedes revisar el código haciendo click.
+
+### Páginas (en carpeta pages)
+
+- [countries - Página donde se listan todos los paises y puedes filtrar](../src/app/pages/countries/countries.ts)
+- [country-detail - Página donde ver los datos y las reseñas de un país concreto](../src/app/pages/country-detail/country-detail.ts)
+- [landing - Página de Inicio/Landing Page](../src/app/pages/landing/landing.ts)
+- [profile - Página para actualizar información personal o gestionar la cuenta](../src/app/pages/profile/profile.ts)
+- [sign-in - Página de Inicio de Sesión](../src/app/pages/sign-in/sign-in.ts)
+- [sign-up - Página de Registro](../src/app/pages/sign-up/sign-up.ts)
+
+Algunas páginas contienen una carpeta `components/` con componentes que solo se usan en esa página.
+
+### Componentes globales (en carpeta shared)
+
+- [footer - Componente del footer de la App](../src/app/shared/components/footer/footer.ts)
+- [header - Componente del header de la App](../src/app/shared/components/header/header.ts)
+- [confirm-delete-modal - Componente modal de confirmación de borrado](../src/app/shared/components/confirm-delete-modal/confirm-delete-modal.ts)
+- [notification-toast - Componente UI de notificaciones del sistema](../src/app/shared/components/notification-toast/notification-toast.ts)
+- [user-menu - Componente del menu de usuario(link a Mi perfil, cerrar sesión, etc.) desplegable](../src/app/shared/components/user-menu/user-menu.ts)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- Consideraciones y decisiones -->
 
 <a id="decisions"></a>
 
-## 5. Consideraciones y decisiones
+## 6. Consideraciones y decisiones
 
 Algunos detalles que he tenido en cuenta durante el desarrollo implican cuestiones de rendimiento y SEO.
 
