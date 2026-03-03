@@ -31,18 +31,6 @@ export class CountryDetail implements OnInit {
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
-    this.titleService.setTitle(`${this.country()?.translations.spa.common} | Los Países`);
-
-    this.metaService.updateTag({
-      name: 'description',
-      content: `Descubre toda la información sobre ${this.country()?.translations.spa.common}. Consulta sus datos principales, explora las opiniones de otros usuarios y deja tu propia reseña.`,
-    });
-
-    this.metaService.updateTag({
-      name: 'robots',
-      content: 'noindex, nofollow',
-    });
-
     const countryCode = this.route.snapshot.params['code'];
 
     this.updateCountryStats();
@@ -50,6 +38,19 @@ export class CountryDetail implements OnInit {
     this.countryService.getByCode(countryCode).subscribe({
       next: (data) => {
         this.country.set(data);
+
+        const nombrePais = this.country()?.translations.spa.common;
+        this.titleService.setTitle(`${nombrePais} | Los Países`);
+
+        this.metaService.updateTag({
+          name: 'description',
+          content: `Descubre toda la información sobre ${this.country()?.translations.spa.common}. Consulta sus datos principales, explora las opiniones de otros usuarios y deja tu propia reseña.`,
+        });
+
+        this.metaService.updateTag({
+          name: 'robots',
+          content: 'noindex, nofollow',
+        });
 
         const countryName = data.name.common;
         const url = `https://maps.google.com/maps?q=${encodeURIComponent(countryName)}&t=&z=5&ie=UTF8&iwloc=&output=embed`;
