@@ -58,14 +58,7 @@ export class ReviewsSection implements OnInit {
     });
 
     if (this.authService.isLoggedIn()) {
-      this.authService.getUserInfo().subscribe({
-        next: (data) => {
-          this.currentUserInfo.set(data);
-        },
-        error: (error) => {
-          this.toastService.showMessage('Ocurrió un error inesperado: ' + error.message, true);
-        },
-      });
+      this.currentUserInfo.set(this.authService.userInfo());
     }
   }
 

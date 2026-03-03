@@ -8,3 +8,7 @@ export interface ProfileData {
 export interface Username {
   username: string;
 }
+
+export interface AvatarUrl {
+  avatar_url: string;
+}

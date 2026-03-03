@@ -1,5 +1,13 @@
 import { A11yModule } from '@angular/cdk/a11y';
-import { Component, ElementRef, HostListener, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  ElementRef,
+  HostListener,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../../core/services/auth-service';
@@ -18,21 +26,11 @@ export class UserMenu implements OnInit {
   authService = inject(AuthService);
   toastService = inject(ToastService);
 
-  user = signal<UserInfo | null>(null);
+  user = computed(() => this.authService.userInfo());
 
   constructor(private elementRef: ElementRef) {}
 
-  ngOnInit(): void {
-    this.authService.getUserInfo().subscribe({
-      next: (data) => {
-        this.user.set(data);
-        this.authService.userInfo.set(data);
-      },
-      error: (error) => {
-        // errores
-      },
-    });
-  }
+  ngOnInit(): void {}
 
   @HostListener('document:keydown.escape')
   onEscape() {

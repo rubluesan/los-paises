@@ -6,7 +6,7 @@ import { UserInfo } from '../../core/models/auth/UserInfo';
 import { ToastService } from '../../core/services/toast-service';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../core/services/profile-service';
-import { Username } from '../../core/models/ProfileData';
+import { AvatarUrl, ProfileData, Username } from '../../core/models/ProfileData';
 import { form, required, FormField } from '@angular/forms/signals';
 import { Meta, Title } from '@angular/platform-browser';
 import { ConfirmDeleteModal } from '../../shared/components/confirm-delete-modal/confirm-delete-modal';
@@ -99,9 +99,44 @@ export class Profile implements OnInit {
     this.authService.getUserInfo().subscribe({
       next: (data) => {
         this.user.set(data);
+        this.authService.userInfo.set(data);
       },
       error: (error) => {
-        // errores
+        this.toastService.showMessage('Error inesperado: ' + error.message, true);
+      },
+    });
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    this.profileService.uploadAvatar(formData).subscribe({
+      next: (res: any) => {
+        const imageUrl: string = res.body.data.url;
+
+        const profileWithNewAvatar = {
+          username: this.user()?.profile.username,
+          avatar_url: imageUrl,
+        } as ProfileData;
+
+        this.profileService
+          .saveAvatarUrl(profileWithNewAvatar, this.user()?.profile.id!)
+          .subscribe({
+            next: (response) => {
+              this.refreshUserInfo();
+              this.toastService.showMessage('Imagen cambiada con éxito', false);
+            },
+            error: (error) => {
+              this.toastService.showMessage('Error inesperado: ' + error.message, true);
+            },
+          });
+      },
+      error: (error) => {
+        this.toastService.showMessage('Error inesperado: ' + error.message, true);
       },
     });
   }
