@@ -6,7 +6,7 @@ import { UserInfo } from '../../core/models/auth/UserInfo';
 import { ToastService } from '../../core/services/toast-service';
 import { Router } from '@angular/router';
 import { ProfileService } from '../../core/services/profile-service';
-import { AvatarUrl, ProfileData, Username } from '../../core/models/ProfileData';
+import { ProfileData, Username } from '../../core/models/ProfileData';
 import { form, required, FormField } from '@angular/forms/signals';
 import { Meta, Title } from '@angular/platform-browser';
 import { ConfirmDeleteModal } from '../../shared/components/confirm-delete-modal/confirm-delete-modal';
@@ -49,9 +49,6 @@ export class Profile implements OnInit {
       name: 'robots',
       content: 'noindex, nofollow',
     });
-
-    // this.refreshUserInfo();
-    // this.user.set(this.authService.userInfo());
   }
 
   updateProfile() {
@@ -63,10 +60,10 @@ export class Profile implements OnInit {
     const dataToUpdate = this.profileInfoForm().value();
     this.profileService.update(dataToUpdate, this.user()?.profile.id!).subscribe({
       next: (response) => {
-        // this.refreshUserInfo();
         this.profileInfoModel.set({
           username: '',
         });
+        this.authService.refreshUser();
         this.toastService.showMessage('Perfil Actualizado con éxito', false);
       },
       error: (error) => {
@@ -96,18 +93,6 @@ export class Profile implements OnInit {
     });
   }
 
-  private refreshUserInfo() {
-    // this.authService.getUserInfo().subscribe({
-    //   next: (data) => {
-    //     // this.user.set(data);
-    //     // this.authService.userInfo.set(data);
-    //   },
-    //   error: (error) => {
-    //     this.toastService.showMessage('Error inesperado: ' + error.message, true);
-    //   },
-    // });
-  }
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (!file) return;
@@ -128,7 +113,7 @@ export class Profile implements OnInit {
           .saveAvatarUrl(profileWithNewAvatar, this.user()?.profile.id!)
           .subscribe({
             next: (response) => {
-              // this.refreshUserInfo();
+              this.authService.refreshUser();
               this.toastService.showMessage('Imagen cambiada con éxito', false);
             },
             error: (error) => {

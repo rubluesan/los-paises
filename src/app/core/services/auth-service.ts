@@ -1,6 +1,6 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, httpResource, HttpResponse } from '@angular/common/http';
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { RegisterData } from '../models/auth/RegisterData';
 import { AuthResponse } from '../models/auth/AuthResponse';
@@ -16,26 +16,15 @@ export class AuthService {
 
   userSession = signal<string | null>(localStorage.getItem('auth_token'));
 
-  private userDataHandler = signal<UserInfo | null>(null);
-
   isLoggedIn = computed(() => !!this.userSession());
 
-  userInfo = computed<UserInfo | null>((): UserInfo | null => {
-    if (this.isLoggedIn() || this.userSession()) {
-      this.getUserInfo().subscribe({
-        next: (data) => {
-          this.userDataHandler.set(data);
-          return data;
-        },
-        error: (error) => {
-          return null;
-        },
-      });
-      return this.userDataHandler();
-    } else {
-      return null;
-    }
+  userInfo = computed(() => {
+    return this.userResource.value() ?? null;
   });
+
+  private userResource = httpResource<UserInfo>(() =>
+    this.userSession() ? environment.apiUrl + '/user' : undefined,
+  );
 
   public register(registerData: RegisterData): Observable<HttpResponse<AuthResponse>> {
     return this.http
@@ -49,10 +38,6 @@ export class AuthService {
           }
         }),
       );
-  }
-
-  private getUserInfo(): Observable<UserInfo> {
-    return this.http.get<UserInfo>(environment.apiUrl + '/user');
   }
 
   public login(loginData: LoginData): Observable<HttpResponse<AuthResponse>> {
@@ -97,6 +82,9 @@ export class AuthService {
   private clearSession() {
     localStorage.removeItem('auth_token');
     this.userSession.set(null);
-    // this.userInfo.set(null);
+  }
+
+  refreshUser() {
+    this.userResource.reload();
   }
 }
