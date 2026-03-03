@@ -16,9 +16,26 @@ export class AuthService {
 
   userSession = signal<string | null>(localStorage.getItem('auth_token'));
 
-  userInfo = signal<UserInfo | null>(null);
+  private userDataHandler = signal<UserInfo | null>(null);
 
   isLoggedIn = computed(() => !!this.userSession());
+
+  userInfo = computed<UserInfo | null>((): UserInfo | null => {
+    if (this.isLoggedIn() || this.userSession()) {
+      this.getUserInfo().subscribe({
+        next: (data) => {
+          this.userDataHandler.set(data);
+          return data;
+        },
+        error: (error) => {
+          return null;
+        },
+      });
+      return this.userDataHandler();
+    } else {
+      return null;
+    }
+  });
 
   public register(registerData: RegisterData): Observable<HttpResponse<AuthResponse>> {
     return this.http
@@ -34,7 +51,7 @@ export class AuthService {
       );
   }
 
-  public getUserInfo(): Observable<UserInfo> {
+  private getUserInfo(): Observable<UserInfo> {
     return this.http.get<UserInfo>(environment.apiUrl + '/user');
   }
 
@@ -80,6 +97,6 @@ export class AuthService {
   private clearSession() {
     localStorage.removeItem('auth_token');
     this.userSession.set(null);
-    this.userInfo.set(null);
+    // this.userInfo.set(null);
   }
 }

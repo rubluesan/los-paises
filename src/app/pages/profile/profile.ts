@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LucideAngularModule } from 'lucide-angular';
 import { AuthService } from '../../core/services/auth-service';
@@ -26,7 +26,7 @@ export class Profile implements OnInit {
   toastService = inject(ToastService);
   private router = inject(Router);
 
-  user = signal<UserInfo | null>(null);
+  user = computed<UserInfo | null>(() => this.authService.userInfo());
   showModal = signal(false);
 
   profileInfoModel = signal<Username>({
@@ -50,7 +50,8 @@ export class Profile implements OnInit {
       content: 'noindex, nofollow',
     });
 
-    this.refreshUserInfo();
+    // this.refreshUserInfo();
+    // this.user.set(this.authService.userInfo());
   }
 
   updateProfile() {
@@ -62,7 +63,7 @@ export class Profile implements OnInit {
     const dataToUpdate = this.profileInfoForm().value();
     this.profileService.update(dataToUpdate, this.user()?.profile.id!).subscribe({
       next: (response) => {
-        this.refreshUserInfo();
+        // this.refreshUserInfo();
         this.profileInfoModel.set({
           username: '',
         });
@@ -96,15 +97,15 @@ export class Profile implements OnInit {
   }
 
   private refreshUserInfo() {
-    this.authService.getUserInfo().subscribe({
-      next: (data) => {
-        this.user.set(data);
-        this.authService.userInfo.set(data);
-      },
-      error: (error) => {
-        this.toastService.showMessage('Error inesperado: ' + error.message, true);
-      },
-    });
+    // this.authService.getUserInfo().subscribe({
+    //   next: (data) => {
+    //     // this.user.set(data);
+    //     // this.authService.userInfo.set(data);
+    //   },
+    //   error: (error) => {
+    //     this.toastService.showMessage('Error inesperado: ' + error.message, true);
+    //   },
+    // });
   }
 
   onFileSelected(event: any) {
@@ -127,7 +128,7 @@ export class Profile implements OnInit {
           .saveAvatarUrl(profileWithNewAvatar, this.user()?.profile.id!)
           .subscribe({
             next: (response) => {
-              this.refreshUserInfo();
+              // this.refreshUserInfo();
               this.toastService.showMessage('Imagen cambiada con éxito', false);
             },
             error: (error) => {
