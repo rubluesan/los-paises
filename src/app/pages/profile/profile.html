@@ -83,7 +83,7 @@
           </div>
           @if (showModal()) {
           <app-confirm-delete-modal [targetName]="user()?.profile?.username!" (onConfirm)="deleteAccount()"
-            (onCancel)="showModal.set(false)" />
+            (onCancel)="showModal.set(false)" cdkTrapFocus (cdkTrapFocusAutoCapture)="true" />
           }
 
 

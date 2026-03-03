@@ -10,10 +10,11 @@ import { Username } from '../../core/models/ProfileData';
 import { form, required, FormField } from '@angular/forms/signals';
 import { Meta, Title } from '@angular/platform-browser';
 import { ConfirmDeleteModal } from '../../shared/components/confirm-delete-modal/confirm-delete-modal';
+import { A11yModule } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-profile',
-  imports: [LucideAngularModule, FormsModule, FormField, ConfirmDeleteModal],
+  imports: [LucideAngularModule, FormsModule, FormField, ConfirmDeleteModal, A11yModule],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
