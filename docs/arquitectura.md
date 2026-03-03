@@ -1,4 +1,4 @@
-# Arquitectura del proyecto - WIP
+# Arquitectura del proyecto
 
 <p align="right"><a href="../README.md">Volver al README general</a></p>
 
@@ -12,12 +12,12 @@
     <li><a href="#tech-stack">Stack Tecnológico</a></li>
     <li><a href="#project-structure">Estructura de Carpetas</a></li>
     <li><a href="#api-integrations">Integraciones con APIs</a></li>
-    <li><a href="#navigation">Navegación</a></li>
     <li>
-      <a href="#general">Consideraciones y decisiones</a>
+      <a href="#decisions">Consideraciones y decisiones</a>
       <ul>
         <li><a href="#performance">Rendimiento</a></li>
         <li><a href="#seo">SEO</a></li>
+        <li><a href="#accessibility">Accesibilidad</a></li>
       </ul>
     </li>
   </ol>
@@ -251,6 +251,91 @@ public saveAvatarUrl(dataToUpdate: AvatarUrl, id: string): Observable<HttpRespon
   });
 }
 
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Consideraciones y decisiones -->
+
+<a id="decisions"></a>
+
+## 5. Consideraciones y decisiones
+
+Algunos detalles que he tenido en cuenta durante el desarrollo implican cuestiones de rendimiento y SEO.
+
+<a id="performance"></a>
+
+### Rendimiento
+
+Para el cargado de imágenes he usado la directiva NgOptimizedImage (uso de [ngSrc] en el template).
+En el caso de la página donde se muestran todos los países, además, he cargado
+las cards de los primeros 4 países con prioridad añadiendo la propiedad `priority`. Ej.:
+
+```html
+<img
+  [ngSrc]="countryData.flags.svg"
+  [alt]="countryData.flags.alt"
+  class="flag-image"
+  fill
+  [priority]="true"
+/>
+```
+
+<a id="seo"></a>
+
+### SEO
+
+Para que google indexe y posicione bien la página he añadido MetaTags y títulos. Ej.:
+
+```typescript
+  private titleService = inject(Title);
+  private metaService = inject(Meta);
+
+  [...]
+
+  ngOnInit() {
+    this.titleService.setTitle('Explorar | Los Países');
+
+    this.metaService.updateTag({
+      name: 'description',
+      content: 'Explora la lista de países. Elige uno para compartir tu opinión con la comunidad.',
+    });
+
+    this.metaService.updateTag({
+      name: 'robots',
+      content: 'noindex, nofollow',
+    });
+
+    [...]
+
+  }
+```
+
+<a id="accessibility"></a>
+
+### Accesibilidad
+
+En menús desplegables y modales he utilizado cdkTrapFocus para capturar el foco en el menú o modal al navegar por teclado. Ej.:
+
+```html
+<div
+  class="dropdown-card"
+  animate.enter="pop-in"
+  animate.leave="pop-out"
+  cdkTrapFocus
+  (cdkTrapFocusAutoCapture)="true"
+></div>
+```
+
+Además, he añadido algunos eventos de escucha al teclado. En el caso del [menu de usuario](../src/app/shared/components/user-menu/user-menu.ts), la única manera de salir del menú si navegas por teclado es presionando la tecla escape Ej.:
+
+```typescript
+@HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.isOpen()) {
+      this.toggleMenu();
+    }
+  }
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
